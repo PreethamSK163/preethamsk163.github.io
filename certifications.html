@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifications — Preetham SK</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#00e676;--green2:#00c853;--teal:#00e5ff;--purple:#b388ff;
+  --amber:#ffd740;--coral:#ff8a80;--orange:#ffab40;
+  --bg:#0d1117;--card:#161d27;--card2:#1a2232;
+  --border:rgba(0,230,118,0.14);--border2:rgba(255,255,255,0.07);
+  --ink:#e8f5e9;--ink2:#e8f5e9;--muted:#e8f5e9;
+  --mono:'IBM Plex Mono',monospace;--body:'IBM Plex Sans',sans-serif;--serif:'IBM Plex Serif',serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(0,230,118,0.11) 1.2px,transparent 1.2px);
+  background-size:28px 28px;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 800px 600px at 90% 5%,rgba(0,229,255,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 700px 700px at 3% 90%,rgba(0,230,118,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 500px 400px at 50% 50%,rgba(179,136,255,0.04) 0%,transparent 70%);}
+
+/* bg tags */
+.bg-tags{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-tag{position:absolute;font-family:var(--mono);font-size:0.58rem;padding:0.2rem 0.58rem;
+  border-radius:100px;letter-spacing:0.07em;opacity:0.22;white-space:nowrap;
+  border:1px solid var(--green);color:var(--green);
+  animation:tagDrift 14s ease-in-out infinite,tagGlow 5s ease-in-out infinite;}
+@keyframes tagDrift{
+  0%{transform:translateY(0) translateX(0);}25%{transform:translateY(-7px) translateX(4px);}
+  50%{transform:translateY(-3px) translateX(-5px);}75%{transform:translateY(5px) translateX(3px);}
+  100%{transform:translateY(0) translateX(0);}}
+@keyframes tagGlow{
+  0%,100%{opacity:0.18;text-shadow:none;box-shadow:none;}
+  50%{opacity:0.38;text-shadow:0 0 8px rgba(0,230,118,0.5);box-shadow:0 0 8px rgba(0,230,118,0.15);}}
+.bg-tag:nth-child(2){animation-duration:17s,6s;animation-delay:1.2s,0.8s;}
+.bg-tag:nth-child(3){animation-duration:12s,4.5s;animation-delay:2.5s,1.5s;}
+.bg-tag:nth-child(4){animation-duration:19s,7s;animation-delay:0.4s,2.2s;}
+.bg-tag:nth-child(5){animation-duration:15s,5.5s;animation-delay:3.1s,0.3s;}
+.bg-tag:nth-child(6){animation-duration:11s,4s;animation-delay:1.8s,3.0s;}
+.bg-tag:nth-child(7){animation-duration:20s,6.5s;animation-delay:0.7s,1.1s;}
+.bg-tag:nth-child(8){animation-duration:13s,5s;animation-delay:4.0s,0.6s;}
+.bg-tag:nth-child(9){animation-duration:16s,7.5s;animation-delay:2.0s,2.8s;}
+.bg-tag:nth-child(10){animation-duration:18s,4.8s;animation-delay:0.9s,1.9s;}
+.bg-tag:nth-child(11){animation-duration:14s,6.2s;animation-delay:3.5s,0.4s;}
+.bg-tag:nth-child(12){animation-duration:10s,5.8s;animation-delay:1.4s,3.3s;}
+.bg-tag:nth-child(13){animation-duration:22s,4.2s;animation-delay:2.7s,1.7s;}
+.bg-tag:nth-child(14){animation-duration:15s,7.2s;animation-delay:0.2s,2.5s;}
+.bg-tag:nth-child(15){animation-duration:12s,5.3s;animation-delay:3.8s,0.9s;}
+.bg-tag:nth-child(16){animation-duration:17s,6.8s;animation-delay:1.6s,3.6s;}
+.bg-tag:nth-child(17){animation-duration:21s,4.6s;animation-delay:0.5s,1.3s;}
+.bg-tag:nth-child(18){animation-duration:13s,7.8s;animation-delay:2.3s,2.1s;}
+.bg-tag:nth-child(19){animation-duration:16s,5.1s;animation-delay:4.2s,0.7s;}
+.bg-tag:nth-child(20){animation-duration:11s,6.4s;animation-delay:1.0s,3.9s;}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,17,23,0.93);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--border2);
+  height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;}
+.nav-logo{font-family:var(--mono);font-size:0.76rem;color:var(--green);letter-spacing:0.12em;font-weight:700;}
+.nav-logo em{color:rgba(255,255,255,0.35);font-style:normal;font-weight:400;}
+nav ul{list-style:none;display:flex;gap:0.1rem;}
+nav ul li a{font-family:var(--mono);font-size:0.62rem;text-decoration:none;color:rgba(255,255,255,1.0);
+  padding:0.32rem 0.75rem;border-radius:4px;letter-spacing:0.06em;transition:all 0.16s;}
+nav ul li a:hover,nav ul li a.active{background:rgba(0,230,118,0.1);color:var(--green);}
+
+/* waveform divider */
+.wdiv{position:relative;z-index:1;background:#090d13;padding:0.75rem 5rem;
+  display:flex;gap:1.25rem;align-items:center;
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden;}
+.wdl{font-family:var(--mono);font-size:0.55rem;min-width:38px;letter-spacing:0.08em;color:rgba(255,255,255,0.25);}
+.wdf{flex:1;height:22px;overflow:hidden;}.wdf svg{width:200%;height:100%;animation:wavescroll 3s linear infinite;}
+@keyframes wavescroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* page hero */
+.page-hero{padding:7rem 5rem 3rem;position:relative;z-index:1;}
+.page-hero-inner{max-width:760px;}
+.page-title{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--ink);
+  letter-spacing:-0.02em;margin-bottom:0.6rem;}
+.page-title span{color:var(--green);}
+.page-desc{font-size:0.95rem;line-height:1.8;color:#e8f5e9;max-width:620px;}
+
+.sec-label{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);
+  font-size:0.6rem;color:var(--green);letter-spacing:0.16em;margin-bottom:0.55rem;font-weight:500;}
+.sec-label::before{content:'';width:20px;height:1.5px;background:var(--green);flex-shrink:0;
+  animation:linepulse 2.8s ease-in-out infinite;}
+@keyframes linepulse{0%,100%{width:20px;opacity:1}50%{width:34px;opacity:0.55}}
+
+/* stats bar */
+.proj-stats-wrap{display:flex;align-items:center;gap:1.25rem;margin-top:2rem;flex-wrap:nowrap;}
+.proj-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:9px;
+  overflow:hidden;background:rgba(22,29,39,0.95);backdrop-filter:blur(6px);
+  box-shadow:0 0 32px rgba(0,0,0,0.5);flex-shrink:0;}
+.proj-stat{padding:0.85rem 1.4rem;text-align:center;border-right:1px solid var(--border);}
+.proj-stat:last-child{border-right:none;}
+@keyframes statGlow{0%,100%{text-shadow:none;filter:brightness(0.9);}50%{text-shadow:0 0 18px currentColor,0 0 35px currentColor;filter:brightness(1.6);}}
+.proj-stat-n{font-family:var(--serif);font-size:1.55rem;font-weight:700;line-height:1;color:var(--teal);animation:statGlow 2.5s ease-in-out infinite;}
+.proj-stat-n.g{color:var(--green);}.proj-stat-n.p{color:var(--purple);}.proj-stat-n.a{color:var(--amber);}
+.proj-stat-lbl{font-family:var(--mono);font-size:0.52rem;color:rgba(255,255,255,1);letter-spacing:0.08em;margin-top:0.2rem;font-weight:600;}
+.proj-arrow{font-size:1.4rem;color:var(--green);opacity:0.9;flex-shrink:0;margin:0 0.6rem;
+  animation:arrowPulse 2s ease-in-out infinite;text-shadow:0 0 12px var(--green);}
+@keyframes arrowPulse{0%,100%{opacity:0.5;transform:translateX(0);text-shadow:0 0 8px var(--green);}50%{opacity:1;transform:translateX(6px);text-shadow:0 0 20px var(--green),0 0 40px rgba(0,230,118,0.4);}}
+.proj-breakdown{display:flex;flex-wrap:nowrap;gap:0.5rem;align-items:center;}
+
+@keyframes tagBreath{0%,100%{opacity:0.65;box-shadow:none;filter:brightness(0.8);}50%{opacity:1;box-shadow:0 0 16px var(--c,#00e676),0 0 35px var(--cs,rgba(0,230,118,0.3)),0 0 6px var(--c,#00e676) inset;filter:brightness(1.5);}}
+
+.pbd-tag{font-family:var(--mono);font-size:0.72rem;padding:0.42rem 1.1rem;border-radius:100px;
+  opacity:0.7;letter-spacing:0.07em;font-weight:600;white-space:nowrap;
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.pbd-tag:nth-child(1){animation-delay:0s;}.pbd-tag:nth-child(2){animation-delay:0.6s;}
+.pbd-tag:nth-child(3){animation-delay:1.2s;}.pbd-tag:nth-child(4){animation-delay:1.8s;}
+
+/* sections */
+section{padding:4.5rem 5rem;position:relative;z-index:1;}
+section.alt{background:rgba(22,29,39,0.75);backdrop-filter:blur(6px);
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);}
+.sec-title{font-family:var(--serif);font-size:1.95rem;font-weight:700;color:var(--ink);margin-bottom:2.5rem;letter-spacing:-0.01em;}
+
+/* timeline */
+.timeline{position:relative;padding-left:2.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--green),var(--teal),var(--purple),var(--amber));
+  border-radius:2px;}
+
+/* cert card */
+.cert-card{position:relative;margin-bottom:3rem;background:var(--card);
+  border:1px solid var(--border2);border-radius:14px;padding:2rem 2.2rem;
+  box-shadow:0 4px 32px rgba(0,0,0,0.4);transition:all 0.2s;cursor:pointer;}
+.cert-card:hover{transform:translateX(4px);box-shadow:0 8px 40px rgba(0,0,0,0.5);}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.cert-card.c-green::before{background:linear-gradient(90deg,var(--green),transparent);}
+.cert-card.c-teal::before{background:linear-gradient(90deg,var(--teal),transparent);}
+.cert-card.c-purple::before{background:linear-gradient(90deg,var(--purple),transparent);}
+.cert-card.c-amber::before{background:linear-gradient(90deg,var(--amber),transparent);}
+
+/* timeline dot */
+.cert-card::after{content:'';position:absolute;left:-2.85rem;top:1.8rem;
+  width:12px;height:12px;border-radius:50%;border:2px solid var(--bg);}
+.cert-card.c-green::after{background:var(--green);box-shadow:0 0 10px var(--green);}
+.cert-card.c-teal::after{background:var(--teal);box-shadow:0 0 10px var(--teal);}
+.cert-card.c-purple::after{background:var(--purple);box-shadow:0 0 10px var(--purple);}
+.cert-card.c-amber::after{background:var(--amber);box-shadow:0 0 10px var(--amber);}
+
+/* cert header */
+.cert-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;gap:1rem;}
+.cert-org{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem;}
+.cert-title-name{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;margin-bottom:0.35rem;}
+.cert-title-name.g{color:var(--green);}.cert-title-name.t{color:var(--teal);}
+.cert-title-name.p{color:var(--purple);}.cert-title-name.a{color:var(--amber);}
+.cert-meta{font-family:var(--mono);font-size:0.56rem;color:var(--muted);letter-spacing:0.05em;}
+.cert-date{font-family:var(--mono);font-size:0.58rem;font-weight:600;
+  padding:0.28rem 0.75rem;border-radius:100px;white-space:nowrap;flex-shrink:0;
+  letter-spacing:0.07em;animation:tagBreath 3.5s ease-in-out infinite;
+  color:var(--dc,var(--green));background:var(--dcs,rgba(0,230,118,0.08));border:1px solid var(--dc,var(--green));}
+.cert-date.d-amber{--dc:var(--amber);--dcs:rgba(255,215,64,0.08);}
+.cert-date.d-teal{--dc:var(--teal);--dcs:rgba(0,229,255,0.08);}
+.cert-date.d-green{--dc:var(--green);--dcs:rgba(0,230,118,0.08);}
+
+/* cert points */
+.cert-points{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.4rem;}
+.ipt{display:flex;gap:0.85rem;align-items:flex-start;}
+.ipt-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:0.42rem;}
+.ipt-dot.g{background:var(--green);box-shadow:0 0 6px var(--green);}
+.ipt-dot.t{background:var(--teal);box-shadow:0 0 6px var(--teal);}
+.ipt-dot.p{background:var(--purple);box-shadow:0 0 6px var(--purple);}
+.ipt-dot.a{background:var(--amber);box-shadow:0 0 6px var(--amber);}
+.ipt-lbl{font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.06em;min-width:130px;flex-shrink:0;padding-top:0.02rem;}
+.ipt-lbl.g{color:var(--green);}.ipt-lbl.t{color:var(--teal);}
+.ipt-lbl.p{color:var(--purple);}.ipt-lbl.a{color:var(--amber);}
+.ipt-text{font-size:0.86rem;line-height:1.7;color:var(--ink);}
+
+/* outcome / distinction box */
+.outcome-box{background:rgba(0,0,0,0.25);border-radius:8px;padding:0.85rem 1.1rem;
+  border-left:3px solid var(--c,var(--green));display:flex;gap:0.75rem;align-items:flex-start;}
+.outcome-text{font-size:0.84rem;line-height:1.65;color:var(--ink);}
+.outcome-text strong{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.05em;}
+
+/* sub-courses list (LnT specialisation) */
+.sub-courses{margin:1.2rem 0;display:flex;flex-direction:column;gap:0.5rem;}
+.sub-course{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:0.55rem 0.85rem;border-radius:7px;background:rgba(0,229,255,0.04);
+  border:1px solid rgba(0,229,255,0.1);transition:all 0.15s;}
+.sub-course:hover{background:rgba(0,229,255,0.08);border-color:rgba(0,229,255,0.2);}
+.sub-course-name{font-size:0.84rem;color:var(--ink);line-height:1.4;display:flex;align-items:center;gap:0.6rem;}
+.sub-course-num{font-family:var(--mono);font-size:0.52rem;font-weight:700;letter-spacing:0.06em;
+  padding:0.15rem 0.5rem;border-radius:3px;flex-shrink:0;margin-right:0.35rem;
+  color:var(--teal);background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);}
+.sub-course-date{font-family:var(--mono);font-size:0.54rem;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+
+/* tags */
+.cert-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+.itag{font-family:var(--mono);font-size:0.56rem;padding:0.18rem 0.55rem;border-radius:3px;
+  letter-spacing:0.04em;--c:#00e676;--cs:rgba(0,230,118,0.1);
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.cert-tags .itag:nth-child(1){animation-delay:0s;}.cert-tags .itag:nth-child(2){animation-delay:0.3s;}
+.cert-tags .itag:nth-child(3){animation-delay:0.6s;}.cert-tags .itag:nth-child(4){animation-delay:0.9s;}
+.cert-tags .itag:nth-child(5){animation-delay:1.2s;}.cert-tags .itag:nth-child(6){animation-delay:1.5s;}
+.cert-tags .itag:nth-child(7){animation-delay:1.8s;}.cert-tags .itag:nth-child(8){animation-delay:2.1s;}
+
+/* verify link */
+.verify-link{display:inline-flex;align-items:center;gap:0.35rem;font-family:var(--mono);
+  font-size:0.56rem;letter-spacing:0.06em;text-decoration:none;
+  padding:0.22rem 0.65rem;border-radius:3px;margin-top:0.8rem;
+  border:1px solid rgba(0,230,118,0.3);color:var(--green);background:rgba(0,230,118,0.05);
+  transition:all 0.15s;}
+.verify-link:hover{background:rgba(0,230,118,0.12);border-color:var(--green);}
+.verify-link.t{border-color:rgba(0,229,255,0.3);color:var(--teal);background:rgba(0,229,255,0.05);}
+.verify-link.t:hover{background:rgba(0,229,255,0.12);border-color:var(--teal);}
+
+/* flip mechanism — identical to internship */
+.cert-card{cursor:pointer;}
+.flip-wrap{perspective:1400px;position:relative;}
+.flip-inner{position:relative;width:100%;transform-style:preserve-3d;
+  transition:transform 0.75s cubic-bezier(0.4,0.2,0.2,1);}
+.flip-wrap:hover .flip-inner,
+.flip-wrap.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;}
+.flip-front{position:relative;width:100%;}
+.flip-back{position:absolute;inset:0;transform:rotateY(180deg);
+  background:#0d1117;border-radius:14px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 32px rgba(0,0,0,0.6);}
+.flip-back img{width:100%;height:100%;object-fit:contain;border-radius:6px;}
+.flip-hint{display:flex;align-items:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;}
+.hint-tag{display:inline-flex;align-items:center;gap:0.35rem;font-family:var(--mono);
+  font-size:0.72rem;font-weight:600;letter-spacing:0.06em;padding:0.28rem 0.9rem;
+  border-radius:100px;white-space:nowrap;
+  color:#d400ff;background:rgba(212,0,255,0.08);border:1px solid rgba(212,0,255,0.45);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.hint-tag svg{width:11px;height:11px;flex-shrink:0;}
+.hint-tag:nth-child(1){animation-delay:0s;}.hint-tag:nth-child(2){animation-delay:0.8s;}
+@keyframes hintPulse{0%,100%{opacity:1;}50%{opacity:1;}}
+
+/* distinction badge */
+.distinction-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);
+  font-size:0.58rem;font-weight:700;letter-spacing:0.08em;
+  padding:0.28rem 0.8rem;border-radius:100px;
+  background:rgba(255,215,64,0.12);color:var(--amber);border:1px solid rgba(255,215,64,0.35);
+  margin-bottom:0.4rem;}
+
+/* specialisation badge */
+.spec-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);
+  font-size:0.58rem;font-weight:700;letter-spacing:0.08em;
+  padding:0.28rem 0.8rem;border-radius:100px;
+  background:rgba(0,229,255,0.1);color:var(--teal);border:1px solid rgba(0,229,255,0.3);}
+
+/* footer */
+footer{position:relative;z-index:1;background:#090d13;padding:1.85rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2);}
+.foot-copy{font-family:var(--mono);font-size:0.64rem;color:rgba(255,255,255,0.65);letter-spacing:0.06em;}
+.foot-copy span{color:var(--green);opacity:0.8;}
+.foot-links{display:flex;gap:1.6rem;list-style:none;}
+.foot-links a{font-family:var(--mono);font-size:0.62rem;color:rgba(255,255,255,1.0);
+  text-decoration:none;letter-spacing:0.07em;transition:color 0.16s;}
+.foot-links a:hover{color:var(--green);}
+.tl-dot{position:absolute;left:-6px;top:1.8rem;width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--bg);z-index:10;transition:transform 0.2s,box-shadow 0.2s;}
+.tl-dot:hover{transform:scale(1.4);}
+.tl-dot.g{background:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,0.2),0 0 12px var(--green);}
+.tl-dot.t{background:var(--teal);box-shadow:0 0 0 3px rgba(0,229,255,0.2),0 0 12px var(--teal);}
+.tl-dot.p{background:var(--purple);box-shadow:0 0 0 3px rgba(179,136,255,0.2),0 0 12px var(--purple);}
+.tl-dot.a{background:var(--amber);box-shadow:0 0 0 3px rgba(255,215,64,0.2),0 0 12px var(--amber);}
+.tl-dot.c{background:var(--coral);box-shadow:0 0 0 3px rgba(255,138,128,0.2),0 0 12px var(--coral);}
+.tl-dot.s{background:var(--sky);box-shadow:0 0 0 3px rgba(64,196,255,0.2),0 0 12px var(--sky);}
+</style>
+</head>
+<body>
+
+<!-- BG TAGS -->
+<div class="bg-tags">
+  <span class="bg-tag" style="top:6%;left:5%;">VLSI Design</span>
+  <span class="bg-tag" style="top:12%;left:38%;">VHDL</span>
+  <span class="bg-tag" style="top:7%;right:10%;">Semiconductor</span>
+  <span class="bg-tag" style="top:22%;left:2%;">CMOS Technology</span>
+  <span class="bg-tag" style="top:30%;right:6%;">FPGA</span>
+  <span class="bg-tag" style="top:40%;left:24%;">RISC-V</span>
+  <span class="bg-tag" style="top:48%;right:30%;">Electric EDA</span>
+  <span class="bg-tag" style="top:58%;left:9%;">Digital Logic</span>
+  <span class="bg-tag" style="top:65%;right:12%;">ISA Design</span>
+  <span class="bg-tag" style="top:72%;left:44%;">Sequential Circuits</span>
+  <span class="bg-tag" style="top:80%;left:16%;">CeNSE IISc</span>
+  <span class="bg-tag" style="top:87%;right:22%;">Coursera</span>
+  <span class="bg-tag" style="top:20%;right:44%;">Nano Science</span>
+  <span class="bg-tag" style="top:44%;left:64%;">RV32I</span>
+  <span class="bg-tag" style="top:76%;right:48%;">L&T EduTech</span>
+  <span class="bg-tag" style="top:14%;left:72%;">Maven Silicon</span>
+  <span class="bg-tag" style="top:54%;right:66%;">Memory Design</span>
+  <span class="bg-tag" style="top:90%;left:34%;">MPPT</span>
+  <span class="bg-tag" style="top:36%;left:84%;">Vivado</span>
+  <span class="bg-tag" style="top:63%;left:76%;">I2C / SPI</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PSK<em>_163</em></div>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="publications.html">PUBLICATIONS</a></li>
+    <li><a href="projects.html">PROJECTS</a></li>
+    <li><a href="internship.html">INTERNSHIP</a></li>
+    <li><a href="certifications.html" class="active">CERTIFICATIONS</a></li>
+    <li><a href="awards.html">AWARDS</a></li>
+    <li><a href="extracurricular.html">EXTRACURRICULAR</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="sec-label">CREDENTIALS &amp; TRAINING</div>
+    <h1 class="page-title">Certifications</h1>
+    <p class="page-desc">A curated set of certifications spanning semiconductor device physics, chip design, HDL programming, FPGA architecture, and processor ISA.</p>
+    <div class="proj-stats-wrap">
+      <div class="proj-stats">
+        <div class="proj-stat">
+          <div class="proj-stat-n g">6</div>
+          <div class="proj-stat-lbl">CERTIFICATES</div>
+        </div>
+        <div class="proj-stat">
+          <div class="proj-stat-n t">3</div>
+          <div class="proj-stat-lbl">ISSUERS</div>
+        </div>
+        <div class="proj-stat">
+          <div class="proj-stat-n a">1</div>
+          <div class="proj-stat-lbl">DISTINCTION</div>
+        </div>
+        <div class="proj-stat">
+          <div class="proj-stat-n p">1</div>
+          <div class="proj-stat-lbl">SPECIALISATION</div>
+        </div>
+      </div>
+      <span class="proj-arrow">→</span>
+      <div class="proj-breakdown">
+        <span class="pbd-tag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">IISc Bengaluru</span>
+        <span class="pbd-tag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">L&T EduTech</span>
+        <span class="pbd-tag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Maven Silicon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLK DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ff6e40;">TDI</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 35,4 35,18 70,4 70,18 105,4 105,18 140,4 140,18 175,4 175,18 210,4 210,18 245,4 245,18 280,4 280,18 315,4 315,18 350,4 350,18 385,4 385,18 420,4 420,18 455,4 455,18 490,4 490,18 525,4 525,18 560,4 560,18 595,4 595,18 630,4 630,18 665,4 665,18 700,4" fill="none" stroke="#ff6e40" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ffd740;">TMS</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 58,4 116,18 174,4 232,18 290,4 348,18 406,4 464,18 522,4 580,18 638,4 700,18" fill="none" stroke="#ffd740" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ SECTION 1 — CeNSE IISc ════ -->
+<section>
+  <div class="sec-label">INSTITUTE PROGRAMME</div>
+  <div class="sec-title">Centre for Nano Science and Engineering, IISc Bengaluru</div>
+
+  <div class="timeline">
+
+    <!-- CeNSE Winter School -->
+    <div class="tl-dot t"></div>
+    <div class="cert-card c-amber">
+      <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="distinction-badge">⭐ CERTIFICATE OF DISTINCTION</div>
+                <div class="cert-org">CeNSE Winter School on Semiconductor Technology</div>
+                <div class="cert-title-name a">Centre for Nano Science and Engineering, IISc Bengaluru</div>
+                <div class="cert-meta">Online Programme &nbsp;·&nbsp; 8th – 19th December 2025</div>
+              </div>
+              <div class="cert-date d-amber">DEC 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot a"></div>
+                <div class="ipt-lbl a">PROGRAMME SCOPE</div>
+                <div class="ipt-text">An intensive two-week online conference-cum-school organised by IISc's Centre for Nano Science and Engineering, focused on shaping the future of semiconductor technology — covering device physics, nanofabrication, CMOS scaling, and advanced materials.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot a"></div>
+                <div class="ipt-lbl a">TOPICS COVERED</div>
+                <div class="ipt-text">Semiconductor device fundamentals · MOSFET scaling and short-channel effects · Nanofabrication techniques · CMOS circuit design · Emerging semiconductor materials · Photonics and optoelectronics · IC packaging and reliability.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot a"></div>
+                <div class="ipt-lbl a">ACHIEVEMENT</div>
+                <div class="ipt-text">Awarded <strong style="color:var(--amber);">Certificate of Distinction</strong> — scored above 75% in the programme assessment. Signed by Prof. Ambarish Ghosh, Chair, CeNSE, IISc Bengaluru.</div>
+              </div>
+            </div>
+
+            <div class="outcome-box" style="--c:var(--amber);">
+              <div class="outcome-text"><strong>OUTCOME —</strong> Recognition of distinction-level performance in a nationally competitive semiconductor school conducted by one of India's premier research institutes. Deepened understanding of device-level semiconductor physics relevant to VLSI design.</div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">Semiconductor Physics</span>
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">CMOS Scaling</span>
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">Nanofabrication</span>
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">MOSFET</span>
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">IISc Bengaluru</span>
+              <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">Certificate of Distinction</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+            </div>
+          </div><!-- /flip-front -->
+          <div class="flip-back">
+            <img src="CENSE_Certificate_Preetham_S_K_page-0001.jpg" alt="CeNSE Winter School Certificate of Distinction">
+          </div>
+        </div><!-- /flip-inner -->
+      </div><!-- /flip-wrap -->
+    </div><!-- /cert-card -->
+
+  </div><!-- /timeline -->
+</section>
+
+<!-- MOSI DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ea80fc;">SCK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 12,4 12,18 24,18 24,4 36,4 36,18 48,18 48,4 60,4 60,18 72,18 72,4 84,4 84,18 96,18 96,4 108,4 108,18 120,18 120,4 132,4 132,18 144,18 144,4 156,4 156,18 168,18 168,4 180,4 180,18 192,18 192,4 204,4 204,18 216,18 216,4 228,4 228,18 240,18 240,4 252,4 252,18 264,18 264,4 276,4 276,18 288,18 288,4 300,4 300,18 312,18 312,4 324,4 324,18 336,18 336,4 348,4 348,18 360,18 360,4 372,4 372,18 384,18 384,4 396,4 396,18 408,18 408,4 420,4 420,18 432,18 432,4 444,4 444,18 456,18 456,4 468,4 468,18 480,18 480,4 492,4 492,18 504,18 504,4 516,4 516,18 528,18 528,4 540,4 540,18 552,18 552,4 564,4 564,18 576,18 576,4 588,4 588,18 600,18 600,4 612,4 612,18 624,18 624,4 636,4 636,18 648,18 648,4 660,4 660,18 672,18 672,4 684,4 684,18 700,18" fill="none" stroke="#ea80fc" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#80d8ff;">TRST</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 80,18 80,4 92,4 92,18 104,18 104,4 116,4 116,18 200,18 200,4 212,4 212,18 224,18 224,4 236,4 236,18 320,18 320,4 332,4 332,18 344,18 344,4 356,4 356,18 440,18 440,4 452,4 452,18 464,18 464,4 476,4 476,18 560,18 560,4 572,4 572,18 584,18 584,4 596,4 596,18 700,18" fill="none" stroke="#80d8ff" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ SECTION 2 — L&T EduTech / Coursera ════ -->
+<section class="alt">
+  <div class="sec-label">ONLINE SPECIALISATION</div>
+  <div class="sec-title">L&amp;T EduTech via Coursera</div>
+
+  <div class="timeline">
+
+    <!-- LnT Specialisation (parent) -->
+    <div class="tl-dot p"></div>
+    <div class="cert-card c-teal" onclick="window.open('https://coursera.org/verify/specialization/52G1UVOM8JOS','_blank')">
+      <div class="flip-wrap">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <span class="spec-badge">◆ SPECIALISATION — 4 COURSES</span>
+                <div class="cert-org" style="margin-top:0.4rem;">Chip-based VLSI Design for Industrial Applications</div>
+                <div class="cert-title-name t">L&amp;T EduTech via Coursera &nbsp;·&nbsp; Specialisation Certificate</div>
+                <div class="cert-meta">Verify: coursera.org/verify/specialization/52G1UVOM8JOS</div>
+              </div>
+              <div class="cert-date d-teal">SEP 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">SPECIALISATION SCOPE</div>
+                <div class="ipt-text">A comprehensive 4-course specialisation by L&amp;T EduTech covering VLSI chip design end-to-end — from digital logic fundamentals through CMOS-level chip simulation, VHDL-based circuit design, to FPGA programming for industrial IoT applications.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">KEY SKILLS</div>
+                <div class="ipt-text">Digital design fundamentals · Sequential circuits and memory · CMOS technology and IC design principles · VLSI simulation with Electric VLSI EDA Tool · VHDL programming with Xilinx ISE · FPGA architecture with Vivado · RS232 / SPI / I2C protocols · IoT sensor interfacing.</div>
+              </div>
+            </div>
+
+            <!-- Sub-courses -->
+            <div class="sub-courses">
+              <div class="sub-course">
+                <span class="sub-course-name"><span class="sub-course-num">C-01</span>Fundamentals of Digital Design for VLSI Chip Design</span>
+                <span class="sub-course-date">FEB 2025</span>
+              </div>
+              <div class="sub-course">
+                <span class="sub-course-name"><span class="sub-course-num">C-02</span>VLSI Chip Design and Simulation with Electric VLSI EDA Tool</span>
+                <span class="sub-course-date">JUN 2025</span>
+              </div>
+              <div class="sub-course">
+                <span class="sub-course-name"><span class="sub-course-num">C-03</span>Design of Digital Circuits with VHDL Programming</span>
+                <span class="sub-course-date">SEP 2025</span>
+              </div>
+              <div class="sub-course">
+                <span class="sub-course-name"><span class="sub-course-num">C-04</span>FPGA Architecture Based System for Industrial Application</span>
+                <span class="sub-course-date">SEP 2025</span>
+              </div>
+            </div>
+
+            <div class="outcome-box" style="--c:var(--teal);">
+              <div class="outcome-text"><strong>OUTCOME —</strong> Completed all 4 courses in the specialisation, earning the full Specialisation Certificate. Gained hands-on design experience from gate-level logic all the way to FPGA-deployed industrial systems.</div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">VLSI Design</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">CMOS IC Design</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Electric VLSI Tool</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">VHDL</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">FPGA / Vivado</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Xilinx ISE</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Coursera</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+              <span class="hint-tag">↗ CLICK TO VERIFY ON COURSERA</span>
+            </div>
+
+          </div><!-- /flip-front -->
+          <div class="flip-back">
+            <img src="LNT_Specialization_page-0001.jpg" alt="L&T EduTech Specialisation Certificate">
+          </div>
+        </div>
+      </div>
+    </div><!-- /spec card -->
+
+    <!-- Course 1 -->
+    <div class="tl-dot a"></div>
+    <div class="cert-card c-teal" onclick="window.open('https://coursera.org/verify/XBUKDTM9J2Y3','_blank')">
+      <div class="flip-wrap">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="cert-org">Fundamentals of Digital Design for VLSI Chip Design</div>
+                <div class="cert-title-name t">L&amp;T EduTech via Coursera &nbsp;·&nbsp; Course 1 of 4</div>
+                <div class="cert-meta">Verify: coursera.org/verify/XBUKDTM9J2Y3</div>
+              </div>
+              <div class="cert-date d-teal">FEB 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">COURSE CONTENT</div>
+                <div class="ipt-text">Covers the building blocks of digital design for VLSI — number systems, Boolean algebra, combinational and sequential logic design, flip-flops, registers, counters, and an introduction to CMOS-level digital circuits.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">SKILLS GAINED</div>
+                <div class="ipt-text">Boolean minimisation (Karnaugh maps) · Combinational circuit design · FSM design · Sequential logic · CMOS gate-level fundamentals · Foundational knowledge for VLSI chip design flows.</div>
+              </div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Digital Logic</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Boolean Algebra</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Sequential Circuits</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">CMOS Basics</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">FSM</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+              <span class="hint-tag">↗ CLICK TO VERIFY ON COURSERA</span>
+            </div>
+
+          </div>
+          <div class="flip-back">
+            <img src="1_Fundamentals_of_Digital_Design_for_VLSI_Chip_page-0001.jpg" alt="Fundamentals of Digital Design Certificate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 2 -->
+    <div class="tl-dot t"></div>
+    <div class="cert-card c-teal" onclick="window.open('https://coursera.org/verify/I31QZXH8BGES','_blank')">
+      <div class="flip-wrap">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="cert-org">VLSI Chip Design and Simulation with Electric VLSI EDA Tool</div>
+                <div class="cert-title-name t">L&amp;T EduTech via Coursera &nbsp;·&nbsp; Course 2 of 4</div>
+                <div class="cert-meta">Verify: coursera.org/verify/I31QZXH8BGES</div>
+              </div>
+              <div class="cert-date d-teal">JUN 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">COURSE CONTENT</div>
+                <div class="ipt-text">Hands-on VLSI chip design and simulation using the Electric VLSI EDA Tool — CMOS transistor-level circuit design, schematic capture, layout design, and DRC/ERC verification.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">SKILLS GAINED</div>
+                <div class="ipt-text">CMOS cell design · Schematic-to-layout flow · Electric VLSI EDA Tool · DRC / ERC · IC design principles · Parasitic extraction · Layout vs Schematic (LVS) concepts.</div>
+              </div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Electric VLSI EDA</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">CMOS Layout</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">DRC / ERC</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Schematic Capture</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">IC Design</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+              <span class="hint-tag">↗ CLICK TO VERIFY ON COURSERA</span>
+            </div>
+
+          </div>
+          <div class="flip-back">
+            <img src="2_VLSI_Chip_Design_and_Simulation_with_Electric_tool_page-0001.jpg" alt="VLSI Chip Design with Electric EDA Certificate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 3 -->
+    <div class="tl-dot p"></div>
+    <div class="cert-card c-teal" onclick="window.open('https://coursera.org/verify/W68JZ5CXZVT4','_blank')">
+      <div class="flip-wrap">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="cert-org">Design of Digital Circuits with VHDL Programming</div>
+                <div class="cert-title-name t">L&amp;T EduTech via Coursera &nbsp;·&nbsp; Course 3 of 4</div>
+                <div class="cert-meta">Verify: coursera.org/verify/W68JZ5CXZVT4</div>
+              </div>
+              <div class="cert-date d-teal">SEP 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">COURSE CONTENT</div>
+                <div class="ipt-text">VHDL-based digital circuit design using Xilinx ISE — covers VHDL syntax and programming constructs, design of combinational and sequential circuits, FSM modelling, simulation, and synthesis for FPGA targets.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">SKILLS GAINED</div>
+                <div class="ipt-text">VHDL programming · Structural and behavioural modelling · Xilinx ISE · RTL simulation · FSM implementation · Synthesis and constraint-driven design for FPGA.</div>
+              </div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">VHDL</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Xilinx ISE</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">RTL Simulation</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">FSM Modelling</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">FPGA Synthesis</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+              <span class="hint-tag">↗ CLICK TO VERIFY ON COURSERA</span>
+            </div>
+
+          </div>
+          <div class="flip-back">
+            <img src="3_Design_of_Digital_Circuits_with_VHDL_Programming_page-0001.jpg" alt="Design of Digital Circuits with VHDL Certificate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course 4 -->
+    <div class="tl-dot a"></div>
+    <div class="cert-card c-teal" onclick="window.open('https://coursera.org/verify/4218BOQANGX9','_blank')">
+      <div class="flip-wrap">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="cert-org">FPGA Architecture Based System for Industrial Application</div>
+                <div class="cert-title-name t">L&amp;T EduTech via Coursera &nbsp;·&nbsp; Course 4 of 4</div>
+                <div class="cert-meta">Verify: coursera.org/verify/4218BOQANGX9</div>
+              </div>
+              <div class="cert-date d-teal">SEP 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">COURSE CONTENT</div>
+                <div class="ipt-text">FPGA architecture and industrial system design using Vivado — CLBs, LUTs, BRAMs, and DSP blocks; implementing communication protocols (RS232, SPI, I2C); sensor interfacing and IoT solution deployment on FPGA hardware.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot t"></div>
+                <div class="ipt-lbl t">SKILLS GAINED</div>
+                <div class="ipt-text">Vivado design suite · FPGA architecture (CLB, LUT, BRAM, DSP) · RS232 / SPI / I2C protocols · Sensor interfacing · Industrial IoT on FPGA · Constraint-driven implementation and timing closure.</div>
+              </div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">FPGA</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Vivado</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">RS232 / SPI / I2C</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Sensor Interfacing</span>
+              <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Industrial IoT</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+              <span class="hint-tag">↗ CLICK TO VERIFY ON COURSERA</span>
+            </div>
+
+          </div>
+          <div class="flip-back">
+            <img src="4_FPGA_Architecture_Based_System_for_Industrial_page-0001.jpg" alt="FPGA Architecture Based System Certificate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+<!-- RST_N DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#69f0ae;">WEN</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,4 50,4 50,18 60,18 60,4 110,4 110,18 120,18 120,4 170,4 170,18 180,18 180,4 230,4 230,18 240,18 240,4 290,4 290,18 300,18 300,4 350,4 350,18 360,18 360,4 410,4 410,18 420,18 420,4 470,4 470,18 480,18 480,4 530,4 530,18 540,18 540,4 590,4 590,18 600,18 600,4 700,4" fill="none" stroke="#69f0ae" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ff8a80;">OEN</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,11 17,7 35,4 52,7 70,11 87,15 105,18 122,15 140,11 157,7 175,4 192,7 210,11 227,15 245,18 262,15 280,11 297,7 315,4 332,7 350,11 367,15 385,18 402,15 420,11 437,7 455,4 472,7 490,11 507,15 525,18 542,15 560,11 577,7 595,4 612,7 630,11 647,15 665,18 682,15 700,11" fill="none" stroke="#ff8a80" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ SECTION 3 — Maven Silicon ════ -->
+<section>
+  <div class="sec-label">INDUSTRY TRAINING</div>
+  <div class="sec-title">Maven Silicon — Centre of Excellence in Semiconductor</div>
+
+  <div class="timeline">
+
+    <!-- RISC-V -->
+    <div class="tl-dot t"></div>
+    <div class="cert-card c-green">
+      <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">
+
+            <div class="cert-header">
+              <div>
+                <div class="cert-org">RISC-V Processor — RV32I Base ISA</div>
+                <div class="cert-title-name g">Maven Silicon &nbsp;·&nbsp; Certificate of Completion &nbsp;·&nbsp; MSUID: 9345688855</div>
+                <div class="cert-meta">Online Course &nbsp;·&nbsp; RISC-V Training Partner</div>
+              </div>
+              <div class="cert-date d-green">FEB 2025</div>
+            </div>
+
+            <div class="cert-points">
+              <div class="ipt">
+                <div class="ipt-dot g"></div>
+                <div class="ipt-lbl g">COURSE CONTENT</div>
+                <div class="ipt-text">In-depth study of the RISC-V RV32I base integer instruction set architecture — instruction encoding formats (R/I/S/B/U/J), register file, ALU operations, memory access instructions (load/store), branching, and the complete datapath for a 32-bit RISC-V processor.</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot g"></div>
+                <div class="ipt-lbl g">SKILLS GAINED</div>
+                <div class="ipt-text">RISC-V ISA specification · RV32I instruction encoding · Single-cycle and pipelined processor design concepts · Assembly programming · Datapath and control unit design · Maven Silicon's RISC-V curriculum (industry-standard training partner).</div>
+              </div>
+              <div class="ipt">
+                <div class="ipt-dot g"></div>
+                <div class="ipt-lbl g">RELEVANCE</div>
+                <div class="ipt-text">RISC-V is an open-standard ISA central to modern chip design research and tape-outs. This certification provides the processor architecture foundation directly applicable to RTL design, synthesis, and custom ASIC research.</div>
+              </div>
+            </div>
+
+            <div class="outcome-box" style="--c:var(--green);">
+              <div class="outcome-text"><strong>OUTCOME —</strong> Solid grounding in RISC-V processor architecture from a recognised industry training institute. Directly complemented ongoing RTL and physical design project work with processor-level architectural knowledge.</div>
+            </div>
+
+            <div class="cert-tags">
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">RISC-V</span>
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">RV32I ISA</span>
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Processor Architecture</span>
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Datapath Design</span>
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Maven Silicon</span>
+              <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Assembly Programming</span>
+            </div>
+
+            <div class="flip-hint">
+              <span class="hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                HOVER TO VIEW CERTIFICATE
+              </span>
+            </div>
+
+          </div><!-- /flip-front -->
+          <div class="flip-back">
+            <img src="RISC-V_Processor_-_RV32I_Base_ISA_-Preetham_SK_page-0001.jpg" alt="RISC-V RV32I Base ISA Certificate">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+<!-- MOSI DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#b388ff;">SCLK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,4 80,4 80,8 160,8 160,12 240,12 240,16 320,16 320,18 400,18 400,16 480,16 480,12 560,12 560,8 640,8 640,4 700,4" fill="none" stroke="#b388ff" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ffd740;">PCLK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 28,4 28,18 72,18 72,4 100,4 100,18 144,18 144,4 172,4 172,18 216,18 216,4 244,4 244,18 288,18 288,4 316,4 316,18 360,18 360,4 388,4 388,18 432,18 432,4 460,4 460,18 504,18 504,4 532,4 532,18 576,18 576,4 604,4 604,18 648,18 648,4 676,4 676,18 700,18" fill="none" stroke="#ffd740" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- FOOTER -->
+<script>
+// Sync each flip-inner height to its flip-front so flip-back fills correctly
+document.querySelectorAll('.flip-wrap').forEach(wrap => {
+  const inner = wrap.querySelector('.flip-inner');
+  const front = wrap.querySelector('.flip-front');
+  if (!inner || !front) return;
+  const setH = () => { inner.style.height = front.offsetHeight + 'px'; };
+  setH();
+  window.addEventListener('resize', setH);
+});
+</script>
+
+<footer>
+  <div class="foot-copy">&copy; 2025 <span>Preetham SK</span></div>
+  <ul class="foot-links">
+    <li><a href="https://linkedin.com/in/preethamsk16" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/PreethamSK163" target="_blank">GitHub</a></li>
+    <li><a href="mailto:preethamsk163@gmail.com">Email</a></li>
+    <li><a href="Preetham_SK_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+</body>
+</html>

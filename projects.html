@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Preetham SK</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:   #00e676;
+  --teal:    #00e5ff;
+  --purple:  #b388ff;
+  --amber:   #ffd740;
+  --bg:      #0d1117;
+  --card:    #161d27;
+  --border:  rgba(0,230,118,0.14);
+  --border2: rgba(255,255,255,0.07);
+  --ink:     #e8f5e9;
+  --ink2:    #e8f5e9;
+  --muted:   #e8f5e9;
+  --mono:    'IBM Plex Mono', monospace;
+  --body:    'IBM Plex Sans', sans-serif;
+  --serif:   'IBM Plex Serif', serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(0,230,118,0.11) 1.2px,transparent 1.2px);
+  background-size:28px 28px;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 800px 600px at 90% 5%, rgba(0,229,255,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 700px 700px at 3% 90%, rgba(0,230,118,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 500px 400px at 50% 50%,rgba(179,136,255,0.04) 0%,transparent 70%);}
+
+/* bg tags */
+.bg-tags{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-tag{position:absolute;font-family:var(--mono);font-size:0.58rem;padding:0.2rem 0.58rem;
+  border-radius:100px;letter-spacing:0.07em;opacity:0.22;white-space:nowrap;
+  border:1px solid var(--green);color:var(--green);
+  animation:tagDrift 14s ease-in-out infinite, tagGlow 5s ease-in-out infinite;}
+@keyframes tagDrift{
+  0%  {transform:translateY(0)    translateX(0);}
+  25% {transform:translateY(-7px) translateX(4px);}
+  50% {transform:translateY(-3px) translateX(-5px);}
+  75% {transform:translateY(5px)  translateX(3px);}
+  100%{transform:translateY(0)    translateX(0);}
+}
+@keyframes tagGlow{
+  0%,100%{opacity:0.18;text-shadow:none;box-shadow:none;}
+  50%    {opacity:0.38;text-shadow:0 0 8px rgba(0,230,118,0.5);box-shadow:0 0 8px rgba(0,230,118,0.15);}
+}
+.bg-tag:nth-child(2){animation-duration:17s,6s;  animation-delay:1.2s,0.8s;}
+.bg-tag:nth-child(3){animation-duration:12s,4.5s;animation-delay:2.5s,1.5s;}
+.bg-tag:nth-child(4){animation-duration:19s,7s;  animation-delay:0.4s,2.2s;}
+.bg-tag:nth-child(5){animation-duration:15s,5.5s;animation-delay:3.1s,0.3s;}
+.bg-tag:nth-child(6){animation-duration:11s,4s;  animation-delay:1.8s,3.0s;}
+.bg-tag:nth-child(7){animation-duration:20s,6.5s;animation-delay:0.7s,1.1s;}
+.bg-tag:nth-child(8){animation-duration:13s,5s;  animation-delay:4.0s,0.6s;}
+.bg-tag:nth-child(9){animation-duration:16s,7.5s;animation-delay:2.0s,2.8s;}
+.bg-tag:nth-child(10){animation-duration:18s,4.8s;animation-delay:0.9s,1.9s;}
+.bg-tag:nth-child(11){animation-duration:14s,6.2s;animation-delay:3.5s,0.4s;}
+.bg-tag:nth-child(12){animation-duration:10s,5.8s;animation-delay:1.4s,3.3s;}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,17,23,0.93);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--border2);
+  height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;}
+.nav-logo{font-family:var(--mono);font-size:0.76rem;color:var(--green);letter-spacing:0.12em;font-weight:700;}
+.nav-logo em{color:rgba(255,255,255,0.35);font-style:normal;font-weight:400;}
+nav ul{list-style:none;display:flex;gap:0.1rem;}
+nav ul li a{font-family:var(--mono);font-size:0.62rem;text-decoration:none;color:rgba(255,255,255,1.0);
+  padding:0.32rem 0.75rem;border-radius:4px;letter-spacing:0.06em;transition:all 0.16s;}
+nav ul li a:hover,nav ul li a.active{background:rgba(0,230,118,0.1);color:var(--green);}
+
+/* page hero */
+.page-hero{padding:7rem 5rem 3rem;position:relative;z-index:1;}
+.sec-label{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);
+  font-size:0.6rem;color:var(--green);letter-spacing:0.16em;margin-bottom:0.55rem;font-weight:500;}
+.sec-label::before{content:'';width:20px;height:1.5px;background:var(--green);flex-shrink:0;
+  animation:linepulse 2.8s ease-in-out infinite;}
+@keyframes linepulse{0%,100%{width:20px;opacity:1}50%{width:34px;opacity:0.55}}
+.page-title{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--ink);
+  letter-spacing:-0.02em;margin-bottom:1rem;line-height:1.1;}
+.page-title span{color:var(--teal);}
+.page-desc{font-size:0.95rem;line-height:1.8;color:#e8f5e9;max-width:620px;}
+
+/* stats wrap */
+.proj-stats-wrap{display:flex;align-items:center;gap:1.25rem;margin-top:2rem;flex-wrap:wrap;}
+.proj-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:9px;
+  overflow:hidden;background:rgba(22,29,39,0.95);backdrop-filter:blur(6px);
+  box-shadow:0 0 32px rgba(0,0,0,0.5);flex-shrink:0;}
+.proj-stat{padding:0.85rem 1.4rem;text-align:center;border-right:1px solid var(--border);}
+.proj-stat:last-child{border-right:none;}
+@keyframes statGlow{0%,100%{text-shadow:none;filter:brightness(0.9);}50%{text-shadow:0 0 18px currentColor,0 0 35px currentColor;filter:brightness(1.6);}}
+.proj-stat-n{font-family:var(--serif);font-size:1.55rem;font-weight:700;line-height:1;color:var(--teal);animation:statGlow 2.5s ease-in-out infinite;}
+.proj-stat-n.g{color:var(--green);}
+.proj-stat-n.p{color:var(--purple);}
+.proj-stat-n.a{color:var(--amber);}
+.proj-stat-lbl{font-family:var(--mono);font-size:0.52rem;color:rgba(255,255,255,1);letter-spacing:0.08em;margin-top:0.2rem;font-weight:600;}
+.proj-arrow{font-size:1.4rem;color:var(--green);opacity:0.9;flex-shrink:0;
+  animation:arrowPulse 2s ease-in-out infinite;text-shadow:0 0 12px var(--green);}
+@keyframes arrowPulse{0%,100%{opacity:0.5;transform:translateX(0);text-shadow:0 0 8px var(--green);}50%{opacity:1;transform:translateX(6px);text-shadow:0 0 20px var(--green),0 0 40px rgba(0,230,118,0.4);}}
+.proj-breakdown{display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;}
+.pbd-tag{font-family:var(--mono);font-size:0.72rem;padding:0.42rem 1.1rem;border-radius:100px;
+  letter-spacing:0.07em;font-weight:600;white-space:nowrap;
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+@keyframes tagBreath{
+  0%,100%{opacity:0.65;box-shadow:none;}
+  50%{opacity:1;box-shadow:0 0 10px var(--cs),0 0 20px var(--cs);}
+}
+.pbd-tag:nth-child(1){animation-delay:0s;}
+.pbd-tag:nth-child(2){animation-delay:0.5s;}
+.pbd-tag:nth-child(3){animation-delay:1.0s;}
+.pbd-tag:nth-child(4){animation-delay:1.5s;}
+.pbd-tag:nth-child(5){animation-delay:2.0s;}
+.pbd-tag:nth-child(6){animation-delay:2.5s;}
+
+/* waveform divider */
+.wdiv{position:relative;z-index:1;background:#090d13;padding:0.75rem 5rem;
+  display:flex;gap:1.25rem;align-items:center;
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden;}
+.wdl{font-family:var(--mono);font-size:0.55rem;min-width:38px;letter-spacing:0.08em;
+  color:rgba(255,255,255,0.25);animation:wdlBlink 2s ease-in-out infinite;}
+@keyframes wdlBlink{0%,100%{opacity:0.25}50%{opacity:0.75}}
+.wdf{flex:1;height:22px;overflow:hidden;}
+.wdf svg{width:200%;height:100%;animation:wavescroll 3s linear infinite;}
+@keyframes wavescroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* project grid */
+.proj-section{padding:3.5rem 5rem;position:relative;z-index:1;}
+
+/* timeline line */
+.timeline{position:relative;padding-left:2.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--green),var(--teal),var(--purple),var(--amber));
+  border-radius:2px;}
+.timeline .proj-card::after{content:'';position:absolute;left:-2.85rem;top:1.8rem;
+  width:12px;height:12px;border-radius:50%;border:2px solid var(--bg);}
+.timeline .proj-card.c-green::after{background:var(--green);box-shadow:0 0 10px var(--green);}
+.timeline .proj-card.c-teal::after{background:var(--teal);box-shadow:0 0 10px var(--teal);}
+.timeline .proj-card.c-purple::after{background:var(--purple);box-shadow:0 0 10px var(--purple);}
+.timeline .proj-card.c-amber::after{background:var(--amber);box-shadow:0 0 10px var(--amber);}
+.proj-section.alt{background:rgba(22,29,39,0.55);backdrop-filter:blur(4px);
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);}
+
+.proj-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;cursor:pointer;position:relative;
+  overflow:hidden;margin-bottom:1.5rem;transition:all 0.22s;cursor:pointer;
+  box-shadow:0 2px 16px rgba(0,0,0,0.3);}
+.proj-card:hover{transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 28px rgba(0,229,255,0.08);}
+.proj-card.c-green:hover{box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 28px rgba(0,230,118,0.1);border-color:rgba(0,230,118,0.25);}
+.proj-card.c-teal:hover{box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 28px rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.25);}
+.proj-card.c-purple:hover{box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 28px rgba(179,136,255,0.1);border-color:rgba(179,136,255,0.25);}
+.proj-card.c-amber:hover{box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 28px rgba(255,215,64,0.1);border-color:rgba(255,215,64,0.25);}
+
+.proj-bar{height:3px;width:100%;background-size:200% 100%;animation:barShimmer 3s linear infinite;}
+.proj-bar.green{background:linear-gradient(90deg,#00e676,#00e5ff,#00e676);}
+.proj-bar.teal{background:linear-gradient(90deg,#00e5ff,#b388ff,#00e5ff);}
+.proj-bar.purple{background:linear-gradient(90deg,#b388ff,#00e676,#b388ff);}
+.proj-bar.amber{background:linear-gradient(90deg,#ffd740,#00e676,#ffd740);}
+@keyframes barShimmer{0%{background-position:0%}100%{background-position:200%}}
+
+.proj-inner{padding:1.5rem 1.75rem;}
+.proj-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:0.9rem;}
+.proj-num{font-family:var(--mono);font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;flex-shrink:0;margin-top:0.15rem;}
+.proj-badges{display:flex;gap:0.4rem;flex-wrap:wrap;flex-shrink:0;}
+.badge{font-family:var(--mono);font-size:0.52rem;padding:0.22rem 0.65rem;border-radius:100px;
+  letter-spacing:0.07em;font-weight:500;white-space:nowrap;
+  animation:badgePulse 4s ease-in-out infinite;}
+.badge:nth-child(2){animation-delay:0.8s;}
+.badge:nth-child(3){animation-delay:1.6s;}
+@keyframes badgePulse{0%,100%{opacity:0.85}50%{opacity:1;filter:brightness(1.25);}}
+.badge-green{background:rgba(0,230,118,0.12);color:var(--green);border:1px solid rgba(0,230,118,0.3);}
+.badge-teal{background:rgba(0,229,255,0.1);color:var(--teal);border:1px solid rgba(0,229,255,0.25);}
+.badge-purple{background:rgba(179,136,255,0.1);color:var(--purple);border:1px solid rgba(179,136,255,0.25);}
+.badge-amber{background:rgba(255,215,64,0.1);color:var(--amber);border:1px solid rgba(255,215,64,0.25);}
+.badge-muted{background:rgba(255,111,97,0.1);color:#ff8a80;border:1px solid rgba(255,111,97,0.3);}
+
+.proj-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);
+  line-height:1.4;margin-bottom:0.3rem;}
+.proj-stack{font-family:var(--mono);font-size:0.6rem;color:#e6a817;letter-spacing:0.06em;margin-bottom:1rem;opacity:0.85;}
+.proj-stack span{color:#e6a817;}
+
+.proj-body{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1rem;}
+.proj-point{padding:0.75rem 1rem;border-radius:6px;border-left:2px solid rgba(0,229,255,0.3);
+  background:rgba(0,229,255,0.03);}
+.proj-point.g{border-left-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.03);}
+.proj-point.p{border-left-color:rgba(179,136,255,0.3);background:rgba(179,136,255,0.03);}
+.proj-point.a{border-left-color:rgba(255,215,64,0.3);background:rgba(255,215,64,0.03);}
+.proj-point-lbl{font-family:var(--mono);font-size:0.56rem;color:var(--teal);letter-spacing:0.1em;
+  font-weight:700;margin-bottom:0.3rem;}
+.proj-point-lbl.g{color:var(--green);}
+.proj-point-lbl.p{color:var(--purple);}
+.proj-point-lbl.a{color:var(--amber);}
+.proj-point p{font-size:0.83rem;line-height:1.65;color:#e8f5e9;}
+
+.proj-
+
+
+
+
+
+.proj-link.g{color:var(--green);border-color:rgba(0,230,118,0.3);}
+.proj-link.disabled{color:var(--muted);border-color:rgba(255,255,255,0.1);cursor:not-allowed;pointer-events:none;}
+.proj-status{font-family:var(--mono);font-size:0.56rem;padding:0.18rem 0.55rem;border-radius:3px;
+  letter-spacing:0.07em;}
+.status-progress{background:rgba(255,215,64,0.1);color:var(--amber);border:1px solid rgba(255,215,64,0.3);}
+.status-done{background:rgba(0,230,118,0.1);color:var(--green);border:1px solid rgba(0,230,118,0.3);}
+
+/* footer */
+footer{position:relative;z-index:1;background:#090d13;padding:1.85rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2);}
+.foot-copy{font-family:var(--mono);font-size:0.64rem;color:rgba(255,255,255,0.65);letter-spacing:0.06em;}
+.foot-copy span{color:var(--green);opacity:0.8;}
+.foot-links{display:flex;gap:1.6rem;list-style:none;}
+.foot-links a{font-family:var(--mono);font-size:0.62rem;color:rgba(255,255,255,1.0);
+  text-decoration:none;letter-spacing:0.07em;transition:color 0.16s;}
+.foot-links a:hover{color:var(--green);}
+.tl-dot{position:absolute;left:-6px;top:1.8rem;width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--bg);z-index:10;transition:transform 0.2s,box-shadow 0.2s;}
+.tl-dot:hover{transform:scale(1.4);}
+.tl-dot.g{background:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,0.2),0 0 12px var(--green);}
+.tl-dot.t{background:var(--teal);box-shadow:0 0 0 3px rgba(0,229,255,0.2),0 0 12px var(--teal);}
+.tl-dot.p{background:var(--purple);box-shadow:0 0 0 3px rgba(179,136,255,0.2),0 0 12px var(--purple);}
+.tl-dot.a{background:var(--amber);box-shadow:0 0 0 3px rgba(255,215,64,0.2),0 0 12px var(--amber);}
+.tl-dot.c{background:var(--coral);box-shadow:0 0 0 3px rgba(255,138,128,0.2),0 0 12px var(--coral);}
+.tl-dot.s{background:var(--sky);box-shadow:0 0 0 3px rgba(64,196,255,0.2),0 0 12px var(--sky);}
+
+.proj-footer{display:flex;align-items:center;justify-content:space-between;
+  margin-top:1.2rem;flex-wrap:wrap;gap:0.5rem;}
+
+/* github capsule tag */
+.proj-link{font-family:var(--mono);font-size:0.56rem;font-weight:700;
+  letter-spacing:0.07em;text-decoration:none;
+  padding:0.18rem 0.55rem;border-radius:3px;
+  color:#ffab00;background:rgba(255,171,0,0.1);
+  border:1px solid rgba(255,171,0,0.35);
+  white-space:nowrap;margin-left:auto;
+  animation:ghTagPulse 2.4s ease-in-out infinite;}
+.proj-link:hover{background:rgba(255,171,0,0.2);}
+@keyframes ghTagPulse{
+  0%,100%{opacity:0.85;box-shadow:0 0 4px rgba(255,171,0,0.15);border-color:rgba(255,171,0,0.35);}
+  50%{opacity:1;box-shadow:0 0 10px rgba(255,171,0,0.45),0 0 20px rgba(255,171,0,0.15);border-color:rgba(255,171,0,0.75);filter:brightness(1.2);}
+}
+
+/* glow animations for non-animated tags */
+@keyframes greenGlow{0%,100%{opacity:0.85;box-shadow:0 0 3px rgba(0,230,118,0.1);border-color:rgba(0,230,118,0.3);}50%{opacity:1;box-shadow:0 0 9px rgba(0,230,118,0.45),0 0 18px rgba(0,230,118,0.15);border-color:rgba(0,230,118,0.75);filter:brightness(1.2);}}
+@keyframes amberGlow{0%,100%{opacity:0.85;box-shadow:0 0 3px rgba(255,215,64,0.1);border-color:rgba(255,215,64,0.3);}50%{opacity:1;box-shadow:0 0 9px rgba(255,215,64,0.45),0 0 18px rgba(255,215,64,0.15);border-color:rgba(255,215,64,0.75);filter:brightness(1.2);}}
+@keyframes purpleGlow{0%,100%{opacity:0.85;box-shadow:0 0 3px rgba(179,136,255,0.1);border-color:rgba(179,136,255,0.25);}50%{opacity:1;box-shadow:0 0 9px rgba(179,136,255,0.4),0 0 18px rgba(179,136,255,0.12);border-color:rgba(179,136,255,0.7);filter:brightness(1.2);}}
+@keyframes tealGlow{0%,100%{opacity:0.85;box-shadow:0 0 3px rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.25);}50%{opacity:1;box-shadow:0 0 9px rgba(0,229,255,0.4),0 0 18px rgba(0,229,255,0.12);border-color:rgba(0,229,255,0.7);filter:brightness(1.2);}}
+.status-done{animation:greenGlow 2.6s ease-in-out infinite;}
+.status-progress{animation:amberGlow 2.6s ease-in-out infinite;}
+.pbd-tag{animation:tealGlow 3s ease-in-out infinite;}
+.pbd-tag:nth-child(2){animation-delay:0.7s;}
+.pbd-tag:nth-child(3){animation-delay:1.4s;}
+
+
+.badge-green{animation:greenGlow 2.6s ease-in-out infinite;}
+.badge-teal{animation:tealGlow 2.6s ease-in-out infinite;}
+.badge-purple{animation:purpleGlow 2.6s ease-in-out infinite;}
+.badge-amber{animation:amberGlow 2.6s ease-in-out infinite;}
+.badge-muted{animation:coralGlow 2.6s ease-in-out infinite;}
+@keyframes coralGlow{0%,100%{opacity:0.85;box-shadow:0 0 3px rgba(255,138,128,0.1);border-color:rgba(255,138,128,0.3);}50%{opacity:1;box-shadow:0 0 9px rgba(255,138,128,0.45),0 0 18px rgba(255,138,128,0.15);border-color:rgba(255,138,128,0.75);filter:brightness(1.2);}}
+
+</style>
+</head>
+<body>
+
+<!-- BG TAGS -->
+<div class="bg-tags">
+  <span class="bg-tag" style="top:4%;left:2%;">RTL-to-GDSII</span>
+  <span class="bg-tag" style="top:10%;left:42%;">OpenLANE</span>
+  <span class="bg-tag" style="top:5%;right:5%;">Sky130 PDK</span>
+  <span class="bg-tag" style="top:20%;right:2%;">RISC-V RV32I</span>
+  <span class="bg-tag" style="top:32%;left:1%;">Verilog HDL</span>
+  <span class="bg-tag" style="top:44%;left:30%;">TL-Verilog</span>
+  <span class="bg-tag" style="top:55%;right:4%;">Place &amp; Route</span>
+  <span class="bg-tag" style="top:63%;left:5%;">TCL Scripting</span>
+  <span class="bg-tag" style="top:72%;right:16%;">HSPICE</span>
+  <span class="bg-tag" style="top:88%;left:2%;">ANSYS</span>
+  <span class="bg-tag" style="top:76%;right:3%;">Magic VLSI</span>
+  <span class="bg-tag" style="top:15%;right:22%;">Floorplan</span>
+  <span class="bg-tag" style="top:28%;left:55%;">CTS</span>
+  <span class="bg-tag" style="top:38%;right:8%;">Timing Closure</span>
+  <span class="bg-tag" style="top:50%;left:18%;">Qflow</span>
+  <span class="bg-tag" style="top:60%;right:30%;">GDSII</span>
+  <span class="bg-tag" style="top:68%;left:42%;">Standard Cell</span>
+  <span class="bg-tag" style="top:92%;right:12%;">STA</span>
+  <span class="bg-tag" style="top:95%;left:60%;">Wire Bonding</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PSK<em>_163</em></div>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="publications.html">PUBLICATIONS</a></li>
+    <li><a href="projects.html" class="active">PROJECTS</a></li>
+    <li><a href="internship.html">INTERNSHIP</a></li>
+    <li><a href="certifications.html">CERTIFICATIONS</a></li>
+    <li><a href="awards.html">AWARDS</a></li>
+    <li><a href="extracurricular.html">EXTRACURRICULAR</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="sec-label">ENGINEERING WORK</div>
+  <h1 class="page-title">Projects <span>&</span> Implementations</h1>
+  <p class="page-desc">Hands-on implementations spanning the full VLSI design stack — from RTL coding and logic synthesis to physical design, timing closure, and fabrication-ready GDSII generation.</p>
+  <div class="proj-stats-wrap">
+    <!-- Primary count -->
+    <div class="proj-stats">
+      <div class="proj-stat single">
+        <div class="proj-stat-n g">6</div>
+        <div class="proj-stat-lbl">PROJECTS</div>
+      </div>
+    </div>
+    <!-- Arrow -->
+    <div class="proj-arrow">→</div>
+    <!-- Breakdown tags -->
+    <div class="proj-breakdown">
+      <span class="pbd-tag" style="--c:#00e676;--cs:rgba(0,230,118,0.2);">2&nbsp; GDSII</span>
+      <span class="pbd-tag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.2);">1&nbsp; RISC-V</span>
+      <span class="pbd-tag" style="--c:#ffd740;--cs:rgba(255,215,64,0.2);">1&nbsp; TCL AUTO</span>
+      <span class="pbd-tag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.2);">1&nbsp; PACKAGING</span>
+      <span class="pbd-tag" style="--c:#69f0ae;--cs:rgba(105,240,174,0.2);">1&nbsp; RTL MODULES</span>
+    </div>
+  </div>
+</div>
+
+<!-- CLK DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ffab00;">CLK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 14,4 14,18 28,18 28,4 42,4 42,18 56,18 56,4 70,4 70,18 84,18 84,4 98,4 98,18 112,18 112,4 126,4 126,18 140,18 140,4 154,4 154,18 168,18 168,4 182,4 182,18 196,18 196,4 210,4 210,18 224,18 224,4 238,4 238,18 252,18 252,4 266,4 266,18 280,18 280,4 294,4 294,18 308,18 308,4 322,4 322,18 336,18 336,4 350,4 350,18 364,18 364,4 378,4 378,18 392,18 392,4 406,4 406,18 420,18 420,4 434,4 434,18 448,18 448,4 462,4 462,18 476,18 476,4 490,4 490,18 504,18 504,4 518,4 518,18 532,18 532,4 546,4 546,18 560,18 560,4 574,4 574,18 588,18 588,4 602,4 602,18 616,18 616,4 630,4 630,18 644,18 644,4 658,4 658,18 672,18 672,4 686,4 686,18 700,18" fill="none" stroke="#ffab00" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#40c4ff;">DATA</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <path d="M0,11 C40,11 60,4 120,4 C180,4 200,18 250,18 C300,18 320,4 380,4 C440,4 460,18 510,18 C560,18 580,4 640,4 C670,4 690,11 700,11" fill="none" stroke="#40c4ff" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ PROJECT 1 ════ -->
+<section class="proj-section">
+  <div class="sec-label">PHYSICAL DESIGN</div>
+
+  <div class="timeline">
+  <div class="tl-dot g"></div>
+    <div class="proj-card c-green" data-github="https://github.com/PreethamSK163/Project-1-Digital-VLSI-SoC-Design-and-Planning" onclick="window.open('https://github.com/PreethamSK163/Project-1-Digital-VLSI-SoC-Design-and-Planning','_blank')">
+    <div class="proj-bar green"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-teal">RTL-TO-GDSII</span>
+          <span class="badge badge-muted">SKY130 PDK</span>
+        </div>
+      </div>
+      <div class="proj-title">Digital VLSI SoC Design &amp; Planning</div>
+      <div class="proj-stack">Verilog &nbsp;·&nbsp; <span>OpenLANE</span> &nbsp;·&nbsp; Sky130 PDK &nbsp;·&nbsp; Magic VLSI &nbsp;·&nbsp; OpenTimer</div>
+      <div class="proj-body">
+        <div class="proj-point g">
+          <div class="proj-point-lbl g">IMPLEMENTATION</div>
+          <p>Complete RTL-to-GDSII physical design flow on PicoRV32a RISC-V processor — synthesis, floorplan, placement, CTS, routing, and STA using OpenLANE on Sky130 PDK.</p>
+        </div>
+        <div class="proj-point">
+          <div class="proj-point-lbl">CUSTOM CELL</div>
+          <p>Designed and integrated custom standard cell <code style="color:var(--green);font-size:0.78rem;">sky130_vsdinv</code>; timing closure achieved via ECO flow; DRC/LVS clean; fabrication-ready GDSII generated.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">GDSII GENERATED</span>
+        <a href="https://github.com/PreethamSK163/Project-DigitalVLSI-SoC-Design-Planning" target="_blank" class="proj-link g">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- DATA DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ff6e40;">DATA</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 45,4 45,18 90,4 90,18 135,4 135,18 180,4 180,18 225,4 225,18 270,4 270,18 315,4 315,18 360,4 360,18 405,4 405,18 450,4 450,18 495,4 495,18 540,4 540,18 585,4 585,18 630,4 630,18 675,4 700,11" fill="none" stroke="#ff6e40" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ce93d8;">ADDR</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,4 0,18 10,18 10,4 60,4 60,18 70,18 70,4 90,4 90,18 145,18 145,4 160,4 160,18 175,18 175,4 240,4 240,18 250,18 250,4 330,4 330,18 345,18 345,4 430,4 430,18 445,18 445,4 520,4 520,18 535,18 535,4 605,4 605,18 620,18 620,4 700,4" fill="none" stroke="#ce93d8" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+
+
+<!-- ════ PROJECT 2 ════ -->
+<section class="proj-section">
+  <div class="sec-label">CPU DESIGN</div>
+
+  <div class="timeline">
+  <div class="tl-dot p"></div>
+    <div class="proj-card c-teal" data-github="https://github.com/PreethamSK163/Project-2-RISC-V-CPU-Design-using-TL-Verilog" onclick="window.open('https://github.com/PreethamSK163/Project-2-RISC-V-CPU-Design-using-TL-Verilog','_blank')">
+    <div class="proj-bar teal"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-teal">RISC-V RV32I</span>
+          <span class="badge badge-purple">TL-VERILOG</span>
+        </div>
+      </div>
+      <div class="proj-title">RISC-V CPU Design using TL-Verilog</div>
+      <div class="proj-stack">TL-Verilog &nbsp;·&nbsp; <span>Makerchip IDE</span> &nbsp;·&nbsp; RISC-V RV32I ISA</div>
+      <div class="proj-body">
+        <div class="proj-point">
+          <div class="proj-point-lbl">IMPLEMENTATION</div>
+          <p>Designed a 5-stage pipelined RISC-V RV32I core from scratch in TL-Verilog — fetch, decode, execute, memory, and writeback stages built progressively.</p>
+        </div>
+        <div class="proj-point g">
+          <div class="proj-point-lbl g">FEATURES</div>
+          <p>Data hazard bypassing logic, branch control, instruction and data memory integration; fully verified on Makerchip IDE with waveform simulation.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">VERIFIED ON MAKERCHIP</span>
+        <a href="https://github.com/PreethamSK163/Project-2-RISC-V-CPU-Design-using-TL-Verilog" target="_blank" class="proj-link">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- RST_N DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#f48fb1;">RST_N</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,4 70,4 70,7 140,7 140,11 210,11 210,14 280,14 280,18 350,18 350,14 420,14 420,11 490,11 490,7 560,7 560,4 700,4" fill="none" stroke="#f48fb1" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#18ffff;">VALID</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 20,18 20,4 40,4 40,18 50,18 50,4 70,4 70,18 80,18 80,4 100,4 100,18 180,18 180,4 200,4 200,18 210,18 210,4 230,4 230,18 240,18 240,4 260,4 260,18 340,18 340,4 360,4 360,18 370,18 370,4 390,4 390,18 500,18 500,4 520,4 520,18 530,18 530,4 550,4 550,18 560,18 560,4 580,4 580,18 700,18" fill="none" stroke="#18ffff" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ PROJECT 3 ════ -->
+<section class="proj-section alt">
+  <div class="sec-label">DESIGN AUTOMATION</div>
+
+  <div class="timeline">
+  <div class="tl-dot a"></div>
+    <div class="proj-card c-purple" data-github="https://github.com/PreethamSK163/Project-3-VLSI-Design-Automation-Using-TCL-VSDSYNTH" onclick="window.open('https://github.com/PreethamSK163/Project-3-VLSI-Design-Automation-Using-TCL-VSDSYNTH','_blank')">
+    <div class="proj-bar purple"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-purple">TCL</span>
+          <span class="badge badge-muted">YOSYS · OPENTIMER</span>
+        </div>
+      </div>
+      <div class="proj-title">VLSI Design Automation using TCL — VSDSYNTH</div>
+      <div class="proj-stack">TCL &nbsp;·&nbsp; <span>Yosys</span> &nbsp;·&nbsp; OpenTimer &nbsp;·&nbsp; Shell Scripting &nbsp;·&nbsp; Linux</div>
+      <div class="proj-body">
+        <div class="proj-point p">
+          <div class="proj-point-lbl p">IMPLEMENTATION</div>
+          <p>Built VSDSYNTH — a fully automated, design-agnostic RTL-to-QoR framework. CSV-driven configuration, automated SDC constraint generation, Yosys synthesis, and OpenTimer STA execution — all from a single command.</p>
+        </div>
+        <div class="proj-point g">
+          <div class="proj-point-lbl g">VALIDATION</div>
+          <p>Validated on openMSP430 — 6845 gates synthesised, hierarchy check passed; professional QoR dashboard and CSV report auto-generated.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">6845 GATES · QoR REPORT</span>
+        <a href="https://github.com/PreethamSK163/Project-3-VLSI-Design-Automation-Using-TCL-VSDSYNTH" target="_blank" class="proj-link">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- MOSI DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ff6d00;">MOSI</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 55,4 55,18 110,18 165,4 165,18 220,18 275,4 275,18 330,18 385,4 385,18 440,18 495,4 495,18 550,18 605,4 605,18 700,18" fill="none" stroke="#ff6d00" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#82b1ff;">MISO</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,4 0,18 175,18 175,4 350,4 350,18 525,18 525,4 700,4 700,18" fill="none" stroke="#82b1ff" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ PROJECT 4 ════ -->
+<section class="proj-section">
+  <div class="sec-label">PHYSICAL DESIGN</div>
+
+  <div class="timeline">
+  <div class="tl-dot c"></div>
+    <div class="proj-card c-green" data-github="https://github.com/PreethamSK163/Project-4-SPI-Physical-Design-using-Qflow" onclick="window.open('https://github.com/PreethamSK163/Project-4-SPI-Physical-Design-using-Qflow','_blank')">
+    <div class="proj-bar green"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-teal">QFLOW</span>
+          <span class="badge badge-muted">OSU 0.18µm</span>
+        </div>
+      </div>
+      <div class="proj-title">SPI Controller — Timing Closure and Physical Sign-off</div>
+      <div class="proj-stack">Qflow &nbsp;·&nbsp; <span>Yosys / ABC</span> &nbsp;·&nbsp; Graywolf &nbsp;·&nbsp; Qrouter &nbsp;·&nbsp; Magic &nbsp;·&nbsp; Netgen &nbsp;·&nbsp; Vesta STA</div>
+      <div class="proj-body">
+        <div class="proj-point g">
+          <div class="proj-point-lbl g">IMPLEMENTATION</div>
+          <p>RTL-to-GDSII physical design of SPI controller using open-source Qflow EDA toolchain on OSU 0.18µm standard cell library — synthesis, placement, STA, and routing.</p>
+        </div>
+        <div class="proj-point">
+          <div class="proj-point-lbl">VERIFICATION</div>
+          <p>DRC/LVS clean using Magic and Netgen; <strong style="color:var(--green);">3,106 cells</strong> placed, <strong style="color:var(--teal);">22,417 routes</strong> completed; fabrication-ready GDSII generated.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">DRC ✓ &nbsp; LVS ✓ &nbsp; GDSII</span>
+        <a href="https://github.com/PreethamSK163/Project-4-SPI-Physical-Design-using-Qflow" target="_blank" class="proj-link g">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- DATA DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ea80fc;">IRQ</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 8,4 8,18 80,18 80,4 88,4 88,18 160,18 160,4 168,4 168,18 240,18 240,4 248,4 248,18 320,18 320,4 328,4 328,18 400,18 400,4 408,4 408,18 480,18 480,4 488,4 488,18 560,18 560,4 568,4 568,18 640,18 640,4 648,4 648,18 700,18" fill="none" stroke="#ea80fc" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ff6d00;">ACK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <path d="M0,11 C10,11 15,4 25,4 C35,4 40,18 55,18 C70,18 75,4 85,4 C95,4 100,18 120,18 C160,18 170,11 210,11 C220,11 225,4 235,4 C245,4 250,18 265,18 C280,18 285,4 295,4 C305,4 310,18 330,18 C370,18 380,11 420,11 C430,11 435,4 445,4 C455,4 460,18 475,18 C490,18 495,4 505,4 C515,4 520,18 540,18 C580,18 590,11 700,11" fill="none" stroke="#ff6d00" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ PROJECT 5 ════ -->
+<section class="proj-section alt">
+  <div class="sec-label">RTL DESIGN</div>
+
+  <div class="timeline">
+  <div class="tl-dot s"></div>
+    <div class="proj-card c-teal" data-github="https://github.com/PreethamSK163/Project-5-RTL-Digital-Design-Modules-using-Verilog" onclick="window.open('https://github.com/PreethamSK163/Project-5-RTL-Digital-Design-Modules-using-Verilog','_blank')">
+    <div class="proj-bar teal"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-teal">VERILOG HDL</span>
+          <span class="badge badge-muted">MODELSIM</span>
+        </div>
+      </div>
+      <div class="proj-title">RTL Digital Design Modules using Verilog</div>
+      <div class="proj-stack">Verilog HDL &nbsp;·&nbsp; <span>ModelSim</span> &nbsp;·&nbsp; FSM Design &nbsp;·&nbsp; UART / FIFO</div>
+      <div class="proj-body">
+        <div class="proj-point">
+          <div class="proj-point-lbl">5 MODULES DESIGNED</div>
+          <p>UART (parameterized, FSM-based, parity-checked) · Synchronous FIFO (configurable width/depth) · Traffic Light Controller (sensor-driven FSM with priority logic) · Automatic Temperature Controller · Washing Machine Controller.</p>
+        </div>
+        <div class="proj-point g">
+          <div class="proj-point-lbl g">VERIFICATION</div>
+          <p>Structured testbenches developed for all 5 modules; functional simulation and waveform verification performed using ModelSim.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">5 MODULES · VERIFIED</span>
+        <a href="https://github.com/PreethamSK163/Project-5-RTL-Digital-Design-Modules-using-Verilog" target="_blank" class="proj-link">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- CLK DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#69f0ae;">CLK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 9,4 9,18 18,18 18,4 27,4 27,18 36,18 36,4 45,4 45,18 54,18 54,4 63,4 63,18 72,18 72,4 81,4 81,18 90,18 90,4 99,4 99,18 108,18 108,4 117,4 117,18 126,18 126,4 135,4 135,18 144,18 144,4 153,4 153,18 162,18 162,4 171,4 171,18 180,18 180,4 189,4 189,18 198,18 198,4 207,4 207,18 216,18 216,4 225,4 225,18 234,18 234,4 243,4 243,18 252,18 252,4 261,4 261,18 270,18 270,4 279,4 279,18 288,18 288,4 297,4 297,18 306,18 306,4 315,4 315,18 324,18 324,4 333,4 333,18 342,18 342,4 351,4 351,18 360,18 360,4 369,4 369,18 378,18 378,4 387,4 387,18 396,18 396,4 405,4 405,18 414,18 414,4 423,4 423,18 432,18 432,4 441,4 441,18 450,18 450,4 459,4 459,18 468,18 468,4 477,4 477,18 486,18 486,4 495,4 495,18 504,18 504,4 513,4 513,18 522,18 522,4 531,4 531,18 540,18 540,4 549,4 549,18 558,18 558,4 567,4 567,18 576,18 576,4 585,4 585,18 594,18 594,4 603,4 603,18 612,18 612,4 621,4 621,18 630,18 630,4 639,4 639,18 648,18 648,4 657,4 657,18 666,18 666,4 675,4 675,18 684,18 684,4 693,4 693,18 700,18" fill="none" stroke="#69f0ae" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ffd740;">SEL</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <path d="M0,18 C30,18 50,4 90,4 C110,4 120,11 140,11 C160,11 170,4 210,4 C270,4 290,18 330,18 C350,18 360,11 380,11 C400,11 410,4 450,4 C510,4 530,18 570,18 C590,18 600,11 620,11 C640,11 660,4 700,4" fill="none" stroke="#ffd740" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- ════ PROJECT 6 ════ -->
+<section class="proj-section">
+  <div class="sec-label">SEMICONDUCTOR PACKAGING</div>
+
+  <div class="timeline">
+  <div class="tl-dot g"></div>
+    <div class="proj-card c-purple" data-github="https://github.com/PreethamSK163/Project-6-Packaging-Design-and-Simulation-using-ANSYS" onclick="window.open('https://github.com/PreethamSK163/Project-6-Packaging-Design-and-Simulation-using-ANSYS','_blank')">
+    <div class="proj-bar purple"></div>
+    <div class="proj-inner">
+      <div class="proj-head">
+        
+        <div class="proj-badges">
+          <span class="badge badge-green">COMPLETED</span>
+          <span class="badge badge-purple">ANSYS</span>
+          <span class="badge badge-muted">FLIP-CHIP · QFN</span>
+        </div>
+      </div>
+      <div class="proj-title">Packaging Design and Simulation using ANSYS</div>
+      <div class="proj-stack">ANSYS Electronics Desktop &nbsp;·&nbsp; <span>ANSYS Mechanical</span> &nbsp;·&nbsp; Flip-Chip BGA &nbsp;·&nbsp; QFN</div>
+      <div class="proj-body">
+        <div class="proj-point p">
+          <div class="proj-point-lbl p">SIMULATION</div>
+          <p>Thermal simulation of flip-chip BGA packages in ANSYS Electronics Desktop; thermo-mechanical reliability analysis in ANSYS Mechanical for stress and deformation study.</p>
+        </div>
+        <div class="proj-point">
+          <div class="proj-point-lbl">MODELLING</div>
+          <p>3D package cross-section modelling — die, substrate, wire bonds, and encapsulation; comparative study of wire bonding, flip-chip, and QFN packaging methodologies.</p>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <span class="proj-status status-done">THERMAL + MECHANICAL ANALYSIS</span>
+        <a href="https://github.com/PreethamSK163/Project-6-Packaging-Design-and-Simulation-using-ANSYS" target="_blank" class="proj-link">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /timeline -->
+</section>
+
+<!-- SCK DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#00e5ff;">SCK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,11 20,11 20,4 35,4 35,18 65,18 65,11 90,11 90,4 105,4 105,18 135,18 135,11 160,11 160,4 175,4 175,18 205,18 205,11 230,11 230,4 245,4 245,18 275,18 275,11 300,11 300,4 315,4 315,18 345,18 345,11 370,11 370,4 385,4 385,18 415,18 415,11 440,11 440,4 455,4 455,18 485,18 485,11 510,11 510,4 525,4 525,18 555,18 555,11 580,11 580,4 595,4 595,18 625,18 625,11 650,11 650,4 665,4 665,18 700,18" fill="none" stroke="#00e5ff" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ff4081;">CS_N</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 40,18 40,4 44,4 44,18 90,18 90,4 94,4 94,18 140,18 140,4 144,4 144,18 230,18 230,4 234,4 234,18 280,18 280,4 284,4 284,18 370,18 370,4 374,4 374,18 420,18 420,4 424,4 424,18 510,18 510,4 514,4 514,18 560,18 560,4 564,4 564,18 650,18 650,4 654,4 654,18 700,18" fill="none" stroke="#ff4081" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="foot-copy">&copy; 2025 <span>Preetham SK</span></div>
+  <ul class="foot-links">
+    <li><a href="https://linkedin.com/in/preethamsk16" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/PreethamSK163" target="_blank">GitHub</a></li>
+    <li><a href="mailto:preethamsk163@gmail.com">Email</a></li>
+    <li><a href="Preetham_SK_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+</body>
+</html>

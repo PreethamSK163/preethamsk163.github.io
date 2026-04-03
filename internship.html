@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship — Preetham SK</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#00e676;--green2:#00c853;--teal:#00e5ff;--purple:#b388ff;
+  --amber:#ffd740;--coral:#ff8a80;--orange:#ffab40;
+  --bg:#0d1117;--card:#161d27;--card2:#1a2232;
+  --border:rgba(0,230,118,0.14);--border2:rgba(255,255,255,0.07);
+  --ink:#e8f5e9;--ink2:#e8f5e9;--muted:#e8f5e9;
+  --mono:'IBM Plex Mono',monospace;--body:'IBM Plex Sans',sans-serif;--serif:'IBM Plex Serif',serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(0,230,118,0.11) 1.2px,transparent 1.2px);
+  background-size:28px 28px;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 800px 600px at 90% 5%,rgba(0,229,255,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 700px 700px at 3% 90%,rgba(0,230,118,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 500px 400px at 50% 50%,rgba(179,136,255,0.04) 0%,transparent 70%);}
+
+.bg-tags{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-tag{position:absolute;font-family:var(--mono);font-size:0.58rem;padding:0.2rem 0.58rem;
+  border-radius:100px;letter-spacing:0.07em;opacity:0.22;white-space:nowrap;
+  border:1px solid var(--green);color:var(--green);
+  animation:tagDrift 14s ease-in-out infinite,tagGlow 5s ease-in-out infinite;}
+@keyframes tagDrift{
+  0%{transform:translateY(0) translateX(0);}25%{transform:translateY(-7px) translateX(4px);}
+  50%{transform:translateY(-3px) translateX(-5px);}75%{transform:translateY(5px) translateX(3px);}
+  100%{transform:translateY(0) translateX(0);}}
+@keyframes tagGlow{
+  0%,100%{opacity:0.18;text-shadow:none;box-shadow:none;}
+  50%{opacity:0.38;text-shadow:0 0 8px rgba(0,230,118,0.5);box-shadow:0 0 8px rgba(0,230,118,0.15);}}
+.bg-tag:nth-child(2){animation-duration:17s,6s;animation-delay:1.2s,0.8s;}
+.bg-tag:nth-child(3){animation-duration:12s,4.5s;animation-delay:2.5s,1.5s;}
+.bg-tag:nth-child(4){animation-duration:19s,7s;animation-delay:0.4s,2.2s;}
+.bg-tag:nth-child(5){animation-duration:15s,5.5s;animation-delay:3.1s,0.3s;}
+.bg-tag:nth-child(6){animation-duration:11s,4s;animation-delay:1.8s,3.0s;}
+.bg-tag:nth-child(7){animation-duration:20s,6.5s;animation-delay:0.7s,1.1s;}
+.bg-tag:nth-child(8){animation-duration:13s,5s;animation-delay:4.0s,0.6s;}
+.bg-tag:nth-child(9){animation-duration:16s,7.5s;animation-delay:2.0s,2.8s;}
+.bg-tag:nth-child(10){animation-duration:18s,4.8s;animation-delay:0.9s,1.9s;}
+.bg-tag:nth-child(11){animation-duration:14s,6.2s;animation-delay:3.5s,0.4s;}
+.bg-tag:nth-child(12){animation-duration:10s,5.8s;animation-delay:1.4s,3.3s;}
+.bg-tag:nth-child(13){animation-duration:22s,4.2s;animation-delay:2.7s,1.7s;}
+.bg-tag:nth-child(14){animation-duration:15s,7.2s;animation-delay:0.2s,2.5s;}
+.bg-tag:nth-child(15){animation-duration:12s,5.3s;animation-delay:3.8s,0.9s;}
+.bg-tag:nth-child(16){animation-duration:17s,6.8s;animation-delay:1.6s,3.6s;}
+.bg-tag:nth-child(17){animation-duration:21s,4.6s;animation-delay:0.5s,1.3s;}
+.bg-tag:nth-child(18){animation-duration:13s,7.8s;animation-delay:2.3s,2.1s;}
+.bg-tag:nth-child(19){animation-duration:16s,5.1s;animation-delay:4.2s,0.7s;}
+.bg-tag:nth-child(20){animation-duration:11s,6.4s;animation-delay:1.0s,3.9s;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,17,23,0.93);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--border2);
+  height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 3.5rem;}
+.nav-logo{font-family:var(--mono);font-size:0.76rem;color:var(--green);letter-spacing:0.12em;font-weight:700;}
+.nav-logo em{color:rgba(255,255,255,0.35);font-style:normal;font-weight:400;}
+nav ul{list-style:none;display:flex;gap:0.1rem;}
+nav ul li a{font-family:var(--mono);font-size:0.62rem;text-decoration:none;color:rgba(255,255,255,1.0);
+  padding:0.32rem 0.75rem;border-radius:4px;letter-spacing:0.06em;transition:all 0.16s;}
+nav ul li a:hover,nav ul li a.active{background:rgba(0,230,118,0.1);color:var(--green);}
+
+.wdiv{position:relative;z-index:1;background:#090d13;padding:0.75rem 5rem;
+  display:flex;gap:1.25rem;align-items:center;
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden;}
+.wdl{font-family:var(--mono);font-size:0.55rem;min-width:38px;letter-spacing:0.08em;color:rgba(255,255,255,0.25);animation:wdlBlink 2s ease-in-out infinite;}
+.wdf{flex:1;height:22px;overflow:hidden;}.wdf svg{width:200%;height:100%;animation:wavescroll 3s linear infinite;}
+@keyframes wavescroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes wdlBlink{0%,100%{opacity:0.25}50%{opacity:0.75}}
+
+section{padding:4.5rem 5rem;position:relative;z-index:1;}
+section.alt{background:rgba(22,29,39,0.75);backdrop-filter:blur(6px);
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);}
+.sec-label{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);
+  font-size:0.6rem;color:var(--green);letter-spacing:0.16em;margin-bottom:0.55rem;font-weight:500;}
+.sec-label::before{content:'';width:20px;height:1.5px;background:var(--green);flex-shrink:0;}
+.sec-title{font-family:var(--serif);font-size:1.95rem;font-weight:700;color:var(--ink);margin-bottom:2.5rem;letter-spacing:-0.01em;}
+
+@keyframes tagBreath{0%,100%{opacity:0.65;box-shadow:none;filter:brightness(0.8);}50%{opacity:1;box-shadow:0 0 16px var(--c,#00e676),0 0 35px var(--cs,rgba(0,230,118,0.3)),0 0 6px var(--c,#00e676) inset;filter:brightness(1.5);}}
+  50%{opacity:1;box-shadow:0 0 14px var(--c,#00e676),0 0 30px var(--cs,rgba(0,230,118,0.25));filter:brightness(1.35);}}
+
+/* stats bar */
+
+
+.intern-count{padding:0.85rem 1.4rem;text-align:center;}
+
+
+
+@keyframes arrowPulse{0%,100%{opacity:0.5;transform:translateX(0);text-shadow:0 0 8px var(--green);}50%{opacity:1;transform:translateX(6px);text-shadow:0 0 20px var(--green),0 0 40px rgba(0,230,118,0.4);}}
+@keyframes statGlow{0%,100%{text-shadow:none;filter:brightness(0.9);}50%{text-shadow:0 0 18px currentColor,0 0 35px currentColor;filter:brightness(1.4);}}
+
+.pbd-tag{font-family:var(--mono);font-size:0.72rem;padding:0.42rem 1.1rem;border-radius:100px;
+  opacity:0.7;letter-spacing:0.07em;font-weight:600;white-space:nowrap;
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.pbd-tag:nth-child(1){animation-delay:0s;}.pbd-tag:nth-child(2){animation-delay:0.6s;}
+.pbd-tag:nth-child(3){animation-delay:1.2s;}.pbd-tag:nth-child(4){animation-delay:1.8s;}
+
+/* page hero */
+.page-hero{padding:7rem 5rem 3rem;position:relative;z-index:1;}
+.page-hero-inner{max-width:760px;}
+.page-title{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--ink);
+  letter-spacing:-0.02em;margin-bottom:0.6rem;}
+.page-desc{font-size:0.95rem;line-height:1.8;color:#e8f5e9;max-width:620px;}
+
+/* timeline */
+.timeline{position:relative;padding-left:2.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--green),var(--teal),var(--purple),var(--amber));
+  border-radius:2px;}
+.tl-dot{position:absolute;left:-6px;top:1.8rem;width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--bg);z-index:10;transition:transform 0.2s,box-shadow 0.2s;}
+.tl-dot:hover{transform:scale(1.4);}
+.tl-dot.g{background:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,0.2),0 0 12px var(--green);}
+.tl-dot.t{background:var(--teal);box-shadow:0 0 0 3px rgba(0,229,255,0.2),0 0 12px var(--teal);}
+.tl-dot.p{background:var(--purple);box-shadow:0 0 0 3px rgba(179,136,255,0.2),0 0 12px var(--purple);}
+.tl-dot.a{background:var(--amber);box-shadow:0 0 0 3px rgba(255,215,64,0.2),0 0 12px var(--amber);}
+.tl-dot.c{background:var(--coral);box-shadow:0 0 0 3px rgba(255,138,128,0.2),0 0 12px var(--coral);}
+
+.intern-card{position:relative;margin-bottom:3rem;background:var(--card);
+  border:1px solid var(--border2);border-radius:14px;padding:2rem 2.2rem;
+  box-shadow:0 4px 32px rgba(0,0,0,0.4);transition:all 0.2s;cursor:default;}
+.intern-card:hover{transform:translateX(4px);box-shadow:0 8px 40px rgba(0,0,0,0.5);}
+.intern-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.intern-card.c-green::before{background:linear-gradient(90deg,var(--green),transparent);}
+.intern-card.c-teal::before{background:linear-gradient(90deg,var(--teal),transparent);}
+.intern-card.c-purple::before{background:linear-gradient(90deg,var(--purple),transparent);}
+.intern-card.c-amber::before{background:linear-gradient(90deg,var(--amber),transparent);}
+.intern-card.c-coral::before{background:linear-gradient(90deg,var(--coral),transparent);}
+
+/* timeline dot */
+
+.intern-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;gap:1rem;}
+.intern-org{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem;}
+.intern-role{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;margin-bottom:0.35rem;}
+.intern-role.g{color:var(--green);}.intern-role.t{color:var(--teal);}
+.intern-role.p{color:var(--purple);}.intern-role.a{color:var(--amber);}.intern-role.c{color:var(--coral);}
+.intern-meta{font-family:var(--mono);font-size:0.56rem;color:var(--muted);letter-spacing:0.05em;}
+.intern-date{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.06);border:1px solid var(--border2);
+  padding:0.28rem 0.75rem;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+
+.intern-points{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.4rem;}
+.ipt{display:flex;gap:0.85rem;align-items:flex-start;}
+.ipt-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:0.42rem;}
+.ipt-dot.g{background:var(--green);box-shadow:0 0 6px var(--green);}
+.ipt-dot.t{background:var(--teal);box-shadow:0 0 6px var(--teal);}
+.ipt-dot.p{background:var(--purple);box-shadow:0 0 6px var(--purple);}
+.ipt-dot.a{background:var(--amber);box-shadow:0 0 6px var(--amber);}
+.ipt-lbl{font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.06em;min-width:110px;flex-shrink:0;padding-top:0.02rem;}
+.ipt-lbl.g{color:var(--green);}.ipt-lbl.t{color:var(--teal);}
+.ipt-lbl.p{color:var(--purple);}.ipt-lbl.a{color:var(--amber);}
+.ipt-text{font-size:0.86rem;line-height:1.7;color:var(--ink);}
+
+.outcome-box{background:rgba(0,0,0,0.25);border-radius:8px;padding:0.85rem 1.1rem;
+  border-left:3px solid var(--c,var(--green));display:flex;gap:0.75rem;align-items:flex-start;}
+.outcome-icon{font-size:0.9rem;flex-shrink:0;margin-top:0.05rem;}
+.outcome-text{font-size:0.84rem;line-height:1.65;color:var(--ink);}
+.outcome-text strong{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.05em;}
+
+.intern-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+.itag{font-family:var(--mono);font-size:0.56rem;padding:0.18rem 0.55rem;border-radius:3px;
+  letter-spacing:0.04em;--c:#00e676;--cs:rgba(0,230,118,0.1);
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+
+.ref-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);
+  font-size:0.54rem;color:var(--muted);letter-spacing:0.05em;margin-top:0.6rem;}
+.ref-badge::before{content:'REF:';color:rgba(255,255,255,1.0);}
+
+footer{position:relative;z-index:1;background:#090d13;padding:1.85rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2);}
+.foot-copy{font-family:var(--mono);font-size:0.64rem;color:rgba(255,255,255,0.65);letter-spacing:0.06em;}
+.foot-copy span{color:var(--green);opacity:0.8;}
+.foot-links{display:flex;gap:1.6rem;list-style:none;}
+.foot-links a{font-family:var(--mono);font-size:0.62rem;color:rgba(255,255,255,1.0);
+  text-decoration:none;letter-spacing:0.07em;transition:color 0.16s;}
+.foot-links a:hover{color:var(--green);}
+
+.intern-tags .itag:nth-child(1){animation-delay:0s;}
+.intern-tags .itag:nth-child(2){animation-delay:0.3s;}
+.intern-tags .itag:nth-child(3){animation-delay:0.6s;}
+.intern-tags .itag:nth-child(4){animation-delay:0.9s;}
+.intern-tags .itag:nth-child(5){animation-delay:1.2s;}
+.intern-tags .itag:nth-child(6){animation-delay:1.5s;}
+.intern-tags .itag:nth-child(7){animation-delay:1.8s;}
+.intern-tags .itag:nth-child(8){animation-delay:2.1s;}
+.intern-tags .itag:nth-child(9){animation-delay:2.4s;}
+
+
+
+
+
+
+
+
+
+.pub-count{padding:0.85rem 1.4rem;text-align:center;}
+
+
+
+.proj-breakdown{display:flex;flex-wrap:nowrap;gap:0.5rem;align-items:center;}
+.proj-stats-wrap{display:flex;align-items:center;gap:1.25rem;margin-top:2rem;flex-wrap:nowrap;}
+.proj-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:9px;
+  overflow:hidden;background:rgba(22,29,39,0.95);backdrop-filter:blur(6px);
+  box-shadow:0 0 32px rgba(0,0,0,0.5);flex-shrink:0;}
+.proj-stat{padding:0.85rem 1.4rem;text-align:center;border-right:1px solid var(--border);}
+.proj-stat-n{font-family:var(--serif);font-size:1.55rem;font-weight:700;line-height:1;color:var(--teal);animation:statGlow 2.5s ease-in-out infinite;}
+.proj-stat-lbl{font-family:var(--mono);font-size:0.52rem;color:rgba(255,255,255,1);letter-spacing:0.08em;margin-top:0.2rem;font-weight:600;}
+.proj-arrow{font-size:1.4rem;color:var(--green);opacity:0.9;flex-shrink:0;margin:0 0.6rem;
+  animation:arrowPulse 2s ease-in-out infinite;text-shadow:0 0 12px var(--green);}
+.proj-breakdown{display:flex;flex-wrap:nowrap;gap:0.5rem;align-items:center;}
+.pbd-tag{font-family:var(--mono);font-size:0.72rem;padding:0.42rem 1.1rem;border-radius:100px;
+  opacity:0.7;letter-spacing:0.07em;font-weight:600;white-space:nowrap;
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.pbd-tag{font-family:var(--mono);font-size:0.72rem;padding:0.42rem 1.1rem;border-radius:100px;
+  opacity:0.7;letter-spacing:0.07em;font-weight:600;white-space:nowrap;
+  color:var(--c);background:var(--cs);border:1px solid var(--c);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.proj-stat-n.g{color:var(--green);}
+.proj-stat-n.p{color:var(--purple);}
+.proj-stat-n.a{color:var(--amber);}
+
+/* ── certificate flip ── */
+.intern-card{cursor:pointer;}
+.flip-wrap{perspective:1400px;position:relative;}
+.flip-inner{position:relative;width:100%;transform-style:preserve-3d;
+  transition:transform 0.75s cubic-bezier(0.4,0.2,0.2,1);}
+.flip-wrap:hover .flip-inner,
+.flip-wrap.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;}
+.flip-front{position:relative;width:100%;}
+.flip-back{position:absolute;inset:0;transform:rotateY(180deg);
+  background:#0d1117;border-radius:14px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 32px rgba(0,0,0,0.6);}
+.flip-back img{width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;}
+.flip-hint{display:flex;align-items:center;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;}
+.hint-tag{display:inline-flex;align-items:center;gap:0.35rem;font-family:var(--mono);
+  font-size:0.72rem;font-weight:600;letter-spacing:0.06em;padding:0.28rem 0.9rem;
+  border-radius:100px;white-space:nowrap;
+  color:#d400ff;background:rgba(212,0,255,0.08);border:1px solid rgba(212,0,255,0.45);
+  animation:tagBreath 3.5s ease-in-out infinite;}
+.hint-tag svg{width:11px;height:11px;flex-shrink:0;}
+
+@keyframes greenDateGlow{0%,100%{box-shadow:0 0 3px rgba(0,230,118,0.1);border-color:rgba(0,230,118,0.25);color:rgba(0,230,118,0.8);}50%{box-shadow:0 0 10px rgba(0,230,118,0.45),0 0 20px rgba(0,230,118,0.15);border-color:rgba(0,230,118,0.7);color:var(--green);filter:brightness(1.15);}}
+@keyframes tealDateGlow{0%,100%{box-shadow:0 0 3px rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.25);color:rgba(0,229,255,0.8);}50%{box-shadow:0 0 10px rgba(0,229,255,0.45),0 0 20px rgba(0,229,255,0.15);border-color:rgba(0,229,255,0.7);color:var(--teal);filter:brightness(1.15);}}
+@keyframes amberDateGlow{0%,100%{box-shadow:0 0 3px rgba(255,215,64,0.1);border-color:rgba(255,215,64,0.25);color:rgba(255,215,64,0.8);}50%{box-shadow:0 0 10px rgba(255,215,64,0.45),0 0 20px rgba(255,215,64,0.15);border-color:rgba(255,215,64,0.7);color:var(--amber);filter:brightness(1.15);}}
+@keyframes coralDateGlow{0%,100%{box-shadow:0 0 3px rgba(255,138,128,0.1);border-color:rgba(255,138,128,0.25);color:rgba(255,138,128,0.8);}50%{box-shadow:0 0 10px rgba(255,138,128,0.45),0 0 20px rgba(255,138,128,0.15);border-color:rgba(255,138,128,0.7);color:var(--coral);filter:brightness(1.15);}}
+.intern-date.g{color:rgba(0,230,118,0.85);background:rgba(0,230,118,0.07);border-color:rgba(0,230,118,0.25);animation:greenDateGlow 2.8s ease-in-out infinite;}
+.intern-date.t{color:rgba(0,229,255,0.85);background:rgba(0,229,255,0.07);border-color:rgba(0,229,255,0.25);animation:tealDateGlow 2.8s ease-in-out infinite;}
+.intern-date.a{color:rgba(255,215,64,0.85);background:rgba(255,215,64,0.07);border-color:rgba(255,215,64,0.25);animation:amberDateGlow 2.8s ease-in-out infinite;}
+.intern-date.c{color:rgba(255,138,128,0.85);background:rgba(255,138,128,0.07);border-color:rgba(255,138,128,0.25);animation:coralDateGlow 2.8s ease-in-out infinite;}
+
+
+@keyframes purpleDateGlow{0%,100%{box-shadow:0 0 3px rgba(179,136,255,0.1);border-color:rgba(179,136,255,0.25);color:rgba(179,136,255,0.8);}50%{box-shadow:0 0 10px rgba(179,136,255,0.45),0 0 20px rgba(179,136,255,0.15);border-color:rgba(179,136,255,0.7);color:var(--purple);filter:brightness(1.15);}}
+.intern-date.p{color:rgba(179,136,255,0.85);background:rgba(179,136,255,0.07);border-color:rgba(179,136,255,0.25);animation:purpleDateGlow 2.8s ease-in-out infinite;}
+
+</style>
+</head>
+<body>
+
+<!-- BG TAGS -->
+<div class="bg-tags">
+  <span class="bg-tag" style="top:8%;left:6%;">RTL-to-GDSII</span>
+  <span class="bg-tag" style="top:15%;left:38%;">Verilog HDL</span>
+  <span class="bg-tag" style="top:6%;right:12%;">Cadence Genus</span>
+  <span class="bg-tag" style="top:28%;left:2%;">MAC Unit</span>
+  <span class="bg-tag" style="top:35%;right:5%;">Qflow</span>
+  <span class="bg-tag" style="top:44%;left:22%;">ModelSim</span>
+  <span class="bg-tag" style="top:52%;right:28%;">OpenLANE</span>
+  <span class="bg-tag" style="top:60%;left:8%;">MPPT Algorithm</span>
+  <span class="bg-tag" style="top:68%;right:10%;">DRC / LVS</span>
+  <span class="bg-tag" style="top:74%;left:45%;">FSM Design</span>
+  <span class="bg-tag" style="top:82%;left:15%;">Sky130 PDK</span>
+  <span class="bg-tag" style="top:88%;right:22%;">GDSII</span>
+  <span class="bg-tag" style="top:22%;right:42%;">SPI Controller</span>
+  <span class="bg-tag" style="top:48%;left:62%;">Yosys / ABC</span>
+  <span class="bg-tag" style="top:78%;right:48%;">NC Launch</span>
+  <span class="bg-tag" style="top:12%;left:72%;">Graywolf P&R</span>
+  <span class="bg-tag" style="top:56%;right:65%;">Magic VLSI</span>
+  <span class="bg-tag" style="top:92%;left:32%;">Netgen</span>
+  <span class="bg-tag" style="top:38%;left:82%;">OSU 0.18µm</span>
+  <span class="bg-tag" style="top:65%;left:75%;">Vesta STA</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PSK<em>_163</em></div>
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="publications.html">PUBLICATIONS</a></li>
+    <li><a href="projects.html">PROJECTS</a></li>
+    <li><a href="internship.html" class="active">INTERNSHIP</a></li>
+    <li><a href="certifications.html">CERTIFICATIONS</a></li>
+    <li><a href="awards.html">AWARDS</a></li>
+    <li><a href="extracurricular.html">EXTRACURRICULAR</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="sec-label">PROFESSIONAL EXPERIENCE</div>
+    <h1 class="page-title">Internship Experience</h1>
+    <p class="page-desc">Four internships spanning VLSI research, physical design, RTL design, and embedded systems — at IIT-affiliated research centres, industry training institutes, and online platforms.</p>
+    <div class="proj-stats-wrap">
+      <div class="proj-stats">
+        <div class="proj-stat single">
+          <div class="proj-stat-n g">4</div>
+          <div class="proj-stat-lbl">INTERNSHIPS</div>
+        </div>
+      </div>
+      <div class="proj-arrow">→</div>
+      <div class="proj-breakdown">
+        <span class="pbd-tag" style="--c:#00e676;--cs:rgba(0,230,118,0.2);">1&nbsp; VLSI RESEARCH</span>
+        <span class="pbd-tag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.2);">1&nbsp; PHYSICAL DESIGN</span>
+        <span class="pbd-tag" style="--c:#b388ff;--cs:rgba(179,136,255,0.2);">1&nbsp; SOLAR / FSM</span>
+        <span class="pbd-tag" style="--c:#ffd740;--cs:rgba(255,215,64,0.2);">1&nbsp; RTL DESIGN</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLK DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#d500f9;">CLK</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 16,4 16,18 32,18 32,4 48,4 48,18 64,18 64,4 80,4 80,18 96,18 96,4 112,4 112,18 128,18 128,4 144,4 144,18 160,18 160,4 176,4 176,18 192,18 192,4 208,4 208,18 224,18 224,4 240,4 240,18 256,18 256,4 272,4 272,18 288,18 288,4 304,4 304,18 320,18 320,4 336,4 336,18 352,18 352,4 368,4 368,18 384,18 384,4 400,4 400,18 416,18 416,4 432,4 432,18 448,18 448,4 464,4 464,18 480,18 480,4 496,4 496,18 512,18 512,4 528,4 528,18 544,18 544,4 560,4 560,18 576,18 576,4 592,4 592,18 608,18 608,4 624,4 624,18 640,18 640,4 656,4 656,18 672,18 672,4 688,4 688,18 700,18" fill="none" stroke="#d500f9" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ffab00;">DATA</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <path d="M0,11 C40,11 60,4 120,4 C180,4 200,18 260,18 C320,18 340,4 400,4 C460,4 480,18 540,18 C600,18 630,4 700,4" fill="none" stroke="#ffab00" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<!-- INTERNSHIPS -->
+<section style="padding-bottom:1.5rem;">
+  <div class="timeline">
+
+    <!-- 1. CeNSE / CNVD -->
+    <div class="tl-dot g"></div>
+    <div class="intern-card c-green" style="--c:var(--green);">
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+
+      <div class="intern-header">
+        <div>
+          <div class="intern-org">Center for Nano Electronics &amp; VLSI Design (CNVD)</div>
+          <div class="intern-role g">Summer Research Intern</div>
+          <div class="intern-meta">VIT Chennai &nbsp;·&nbsp; Guide: Dr. S. Umadevi</div>
+        </div>
+        <div class="intern-date p">Jun 2024 – Aug 2024</div>
+      </div>
+      <div class="intern-points">
+        <div class="ipt">
+          <div class="ipt-dot g"></div>
+          <div class="ipt-lbl g">MAC UNIT</div>
+          <div class="ipt-text">Designed a 16×16 Multiply-Accumulate (MAC) unit in Verilog HDL using Row Bypass Adder (RBA) scheme — reducing switching activity and dynamic power compared to conventional ripple carry adder based designs.</div>
+        </div>
+        <div class="ipt">
+          <div class="ipt-dot g"></div>
+          <div class="ipt-lbl g">SIMULATION</div>
+          <div class="ipt-text">Functionally verified using Cadence® NC Launch; gate-level synthesis performed using Cadence® Genus with standard cell library mapping.</div>
+        </div>
+      </div>
+      <div class="outcome-box" style="--c:var(--green);">
+        <div class="outcome-text"><strong>OUTCOME —</strong> MAC unit architecture inspired innovation in reconfigurable binary multiplier design; resulted in Indian Patent Application No. 202541080342, published September 2025.</div>
+      </div>
+      <div class="intern-tags">
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Verilog HDL</span>
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Cadence NC Launch</span>
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Cadence Genus</span>
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">RBA Design</span>
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">MAC Unit</span>
+        <span class="itag" style="--c:#00e676;--cs:rgba(0,230,118,0.1);">Low Power VLSI</span>
+      </div>
+          <div class="flip-hint">
+            <span class="hint-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              HOVER / CLICK TO VIEW CERTIFICATE
+            </span>
+          </div>
+        </div>
+        <div class="flip-back">
+          <img src="cert-cnvd.jpg" alt="CNVD Internship Certificate">
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+    <!-- WEN DIVIDER -->
+    <div class="wdiv">
+      <span class="wdl" style="color:#ff1744;">WEN</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,18 30,4 60,18 90,4 120,18 150,4 180,18 210,4 240,18 270,4 300,18 330,4 360,18 390,4 420,18 450,4 480,18 510,4 540,18 570,4 600,18 630,4 660,18 690,4 700,7" fill="none" stroke="#ff1744" stroke-width="1.3"/>
+      </svg></div>
+      <span class="wdl" style="color:#18ffff;">SEL</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,4 175,4 175,18 195,18 195,4 370,4 370,18 390,18 390,4 565,4 565,18 585,18 585,4 700,4" fill="none" stroke="#18ffff" stroke-width="1.3"/>
+      </svg></div>
+    </div>
+
+<section style="padding-top:3rem;padding-bottom:1.5rem;">
+  <div class="timeline">
+
+    <!-- 2. CSGT -->
+    <div class="tl-dot c"></div>
+    <div class="intern-card c-coral" style="--c:var(--coral);">
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+
+      <div class="intern-header">
+        <div>
+          <div class="intern-org">Centre for Smart Grid Technologies (CSGT)</div>
+          <div class="intern-role c">Summer Research Intern</div>
+          <div class="intern-meta">VIT Chennai &nbsp;·&nbsp; Guide: Dr. O.V. Gnana Swathika</div>
+        </div>
+        <div class="intern-date t">May 2025 – Jul 2025</div>
+      </div>
+      <div class="intern-points">
+        <div class="ipt">
+          <div class="ipt-dot c"></div>
+          <div class="ipt-lbl c">FSM DESIGN</div>
+          <div class="ipt-text">Designed an 11-state FSM-based controller for a Solar Powered EV Charging Station in Verilog HDL — managing charge states, fault detection, and power routing logic.</div>
+        </div>
+        <div class="ipt">
+          <div class="ipt-dot c"></div>
+          <div class="ipt-lbl c">MPPT ALGORITHM</div>
+          <div class="ipt-text">Implemented Perturb &amp; Observe (P&amp;O) MPPT algorithm for maximum solar power extraction under variable irradiance; functional simulation and waveform verification using ModelSim.</div>
+        </div>
+      </div>
+      <div class="outcome-box" style="--c:var(--coral);">
+        <div class="outcome-text"><strong>OUTCOME —</strong> Research contributed to book chapter accepted for publication — <em>Smart Technologies for Smart Buildings</em>, CRC Press, Taylor &amp; Francis (ISBN: 9781041093626).</div>
+      </div>
+      <div class="intern-tags">
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">Verilog HDL</span>
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">FSM Design</span>
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">ModelSim</span>
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">MPPT / P&amp;O</span>
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">Solar EV</span>
+        <span class="itag" style="--c:#ff8a80;--cs:rgba(255,138,128,0.1);">11-State Controller</span>
+      </div>
+          <div class="flip-hint">
+            <span class="hint-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              HOVER / CLICK TO VIEW CERTIFICATE
+            </span>
+          </div>
+        </div>
+        <div class="flip-back">
+          <img src="cert-csgt.jpg" alt="CSGT Internship Certificate">
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+    <!-- DATA DIVIDER -->
+    <div class="wdiv">
+      <span class="wdl" style="color:#69f0ae;">DATA</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,4 0,18 10,18 10,4 65,4 65,18 75,18 75,4 95,4 95,18 155,18 155,4 170,4 170,18 185,18 185,4 250,4 250,18 260,18 260,4 280,4 280,18 345,18 345,4 360,4 360,18 370,18 370,4 440,4 440,18 455,4 455,18 470,18 470,4 535,4 535,18 550,18 550,4 565,4 565,18 630,18 630,4 645,4 645,18 660,18 660,4 700,4" fill="none" stroke="#69f0ae" stroke-width="1.3"/>
+      </svg></div>
+      <span class="wdl" style="color:#f48fb1;">ADDR</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,11 18,4 36,18 54,4 72,18 90,4 108,18 126,4 144,18 162,4 180,18 198,4 216,18 234,4 252,18 270,4 288,18 306,4 324,18 342,4 360,18 378,4 396,18 414,4 432,18 450,4 468,18 486,4 504,18 522,4 540,18 558,4 576,18 594,4 612,18 630,4 648,18 666,4 684,18 700,11" fill="none" stroke="#f48fb1" stroke-width="1.3"/>
+      </svg></div>
+    </div>
+
+<section style="padding-top:3rem;padding-bottom:1.5rem;">
+  <div class="timeline">
+
+    <!-- 3. Maven Silicon -->
+    <div class="tl-dot t"></div>
+    <div class="intern-card c-teal" style="--c:var(--teal);">
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+
+      <div class="intern-header">
+        <div>
+          <div class="intern-org">Maven Silicon</div>
+          <div class="intern-role t">VLSI Physical Design Intern</div>
+          <div class="intern-meta">Online &nbsp;·&nbsp; Ref: MS/B2BPDI/2025-26-135</div>
+        </div>
+        <div class="intern-date a">May 2025 – Jul 2025</div>
+      </div>
+      <div class="intern-points">
+        <div class="ipt">
+          <div class="ipt-dot t"></div>
+          <div class="ipt-lbl t">PD FLOW</div>
+          <div class="ipt-text">Executed complete RTL-to-GDSII physical design flow for Serial Peripheral Interface (SPI) controller using open-source Qflow EDA toolchain on OSU 0.18µm standard cell library.</div>
+        </div>
+        <div class="ipt">
+          <div class="ipt-dot t"></div>
+          <div class="ipt-lbl t">IMPLEMENTATION</div>
+          <div class="ipt-text">RTL synthesis and technology mapping (Yosys/ABC); congestion-aware placement (Graywolf); global and detailed routing (Qrouter); static timing analysis (Vesta) — 3106 cells placed, 22417 routes completed.</div>
+        </div>
+        <div class="ipt">
+          <div class="ipt-dot t"></div>
+          <div class="ipt-lbl t">VERIFICATION</div>
+          <div class="ipt-text">DRC and LVS clean verified using Magic and Netgen; fabrication-ready GDSII layout generated.</div>
+        </div>
+      </div>
+      <div class="outcome-box" style="--c:var(--teal);">
+        <div class="outcome-text"><strong>OUTCOME —</strong> Full GDSII tapeout for SPI controller. 3106 standard cells placed, 22417 routes completed, DRC ✓ LVS ✓ clean. Documented as GitHub repository with all flow stages.</div>
+      </div>
+      <div class="intern-tags">
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Qflow</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Yosys / ABC</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Graywolf</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Qrouter</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Magic VLSI</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Netgen</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">Vesta STA</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">OSU 0.18µm</span>
+        <span class="itag" style="--c:#00e5ff;--cs:rgba(0,229,255,0.1);">GDSII</span>
+      </div>
+          <div class="flip-hint">
+            <span class="hint-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              HOVER / CLICK TO VIEW CERTIFICATE
+            </span>
+          </div>
+        </div>
+        <div class="flip-back">
+          <img src="cert-maven.jpg" alt="Maven Silicon Certificate">
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+    <!-- RST_N DIVIDER -->
+    <div class="wdiv">
+      <span class="wdl" style="color:#40c4ff;">RST_N</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,18 60,18 60,15 120,15 120,11 180,11 180,7 240,7 240,4 300,4 300,7 360,7 360,11 420,11 420,15 480,15 480,18 540,18 540,15 600,15 600,11 660,11 660,7 700,7" fill="none" stroke="#40c4ff" stroke-width="1.3"/>
+      </svg></div>
+      <span class="wdl" style="color:#ffd740;">VALID</span>
+      <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+        <polyline points="0,18 30,18 30,4 50,4 50,18 60,18 60,4 80,4 80,18 90,18 90,4 110,4 110,18 190,18 190,4 210,4 210,18 220,18 220,4 240,4 240,18 250,18 250,4 270,4 270,18 350,18 350,4 370,4 370,18 380,18 380,4 400,4 400,18 490,18 490,4 510,4 510,18 520,18 520,4 540,4 540,18 550,18 550,4 570,4 570,18 650,18 650,4 670,4 670,18 680,18 680,4 700,4" fill="none" stroke="#ffd740" stroke-width="1.3"/>
+      </svg></div>
+    </div>
+
+<section style="padding-top:3rem;padding-bottom:1.5rem;">
+  <div class="timeline">
+
+    <!-- 4. SkillDzire -->
+    <div class="tl-dot a"></div>
+    <div class="intern-card c-amber" style="--c:var(--amber);">
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+
+      <div class="intern-header">
+        <div>
+          <div class="intern-org">SkillDzire</div>
+          <div class="intern-role a">VLSI Design Intern</div>
+          <div class="intern-meta">Online</div>
+        </div>
+        <div class="intern-date g">May 2025 – Jun 2025</div>
+      </div>
+      <div class="intern-points">
+        <div class="ipt">
+          <div class="ipt-dot a"></div>
+          <div class="ipt-lbl a">RTL DESIGN</div>
+          <div class="ipt-text">Designed 5 Verilog RTL modules — UART (parameterized, FSM-based, parity-checked), synchronous FIFO (configurable width/depth), Traffic Light Controller (sensor-driven FSM with priority logic), Automatic Temperature Controller, and Washing Machine Controller.</div>
+        </div>
+        <div class="ipt">
+          <div class="ipt-dot a"></div>
+          <div class="ipt-lbl a">VERIFICATION</div>
+          <div class="ipt-text">Developed structured testbenches with stimulus generation and output monitoring; functional simulation and waveform verification using ModelSim for all 5 modules.</div>
+        </div>
+      </div>
+      <div class="outcome-box" style="--c:var(--amber);">
+        <div class="outcome-text"><strong>OUTCOME —</strong> 5 production-quality RTL modules with full testbench coverage. Documented as GitHub repository — RTL Digital Design Modules using Verilog.</div>
+      </div>
+      <div class="intern-tags">
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">Verilog HDL</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">ModelSim</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">UART</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">FIFO</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">FSM Design</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">Testbench</span>
+        <span class="itag" style="--c:#ffd740;--cs:rgba(255,215,64,0.1);">RTL Modules</span>
+      </div>
+          <div class="flip-hint">
+            <span class="hint-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a80" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              HOVER / CLICK TO VIEW CERTIFICATE
+            </span>
+          </div>
+        </div>
+        <div class="flip-back">
+          <img src="cert-skilldzire.jpg" alt="SkillDzire Certificate">
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- MOSI DIVIDER -->
+<div class="wdiv">
+  <span class="wdl" style="color:#ff6d00;">MOSI</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 35,18 35,4 39,4 39,18 105,18 105,4 109,4 109,18 175,18 175,4 179,4 179,18 245,18 245,4 249,4 249,18 315,18 315,4 319,4 319,18 385,18 385,4 389,4 389,18 455,18 455,4 459,4 459,18 525,18 525,4 529,4 529,18 595,18 595,4 599,4 599,18 665,18 665,4 669,4 669,18 700,18" fill="none" stroke="#ff6d00" stroke-width="1.3"/>
+  </svg></div>
+  <span class="wdl" style="color:#ce93d8;">MISO</span>
+  <div class="wdf"><svg viewBox="0 0 700 22" preserveAspectRatio="none">
+    <polyline points="0,18 0,4 200,4 200,18 400,18 400,4 600,4 600,18 700,18" fill="none" stroke="#ce93d8" stroke-width="1.3"/>
+  </svg></div>
+</div>
+
+<footer>
+  <div class="foot-copy">&copy; 2025 <span>Preetham SK</span></div>
+  <ul class="foot-links">
+    <li><a href="https://linkedin.com/in/preethamsk16" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/PreethamSK163" target="_blank">GitHub</a></li>
+    <li><a href="mailto:preethamsk163@gmail.com">Email</a></li>
+    <li><a href="Preetham_SK_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+</body>
+</html>
